@@ -1,0 +1,20 @@
+<ion-header-bar class="bar-dark">
+    <a ng-hide='firstTime' href='#/tab/editProfile'>
+      <button class="button icon-left ion-ios7-arrow-back button-clear"></button>
+    </a>
+    <a ng-show='firstTime' href='#/editProfile'>
+      <button class="button icon-left ion-ios7-arrow-back button-clear"></button>
+    </a>
+  <h1 class="title">Select photo</h1>
+</ion-header-bar>
+<ion-content has-header="true" has-footer='false' padding="false">
+  <div class='row albumImages'>
+    <div ng-repeat='photo in albumPhotos track by $index' >
+      <div class='col'>
+        <div class='center-cropped' style="background-image: url('{{photo.picture}}');">
+            <p ng-click='fullImage($index)'><img src='{{photo.picture}}'></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

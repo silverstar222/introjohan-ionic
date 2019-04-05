@@ -1,0 +1,237 @@
+
+<ion-view title='' hide-nav-bar="true">
+  <div class='bar bar-header bar-dark'>
+    <div class='row tabButtonMenu'>
+      <div class='col tabButton tabButtonLeft' ng-class="{'tabButtonSelected': viewingPage==='posts'}" ng-click='viewingPage="posts"'>My Posts</div>
+      <div class='col tabButton tabButtonRight' ng-class="{'tabButtonSelected': viewingPage==='info'}" ng-click='viewingPage="info"'>My Info</div>
+    </div>
+      <div class="buttons">
+        <button class="button button-icon ion-gear-a button-clear" ng-click='gotoFilter()'></button>
+      </div>
+  </div>
+  <ion-content padding="false">
+    <div ng-show='viewingPage==="info"' class='feedWrapper'>
+  <div class='bodyWrapper'>
+
+    <div ng-click='addPhoto()'>
+      <button class='button iconLarge verticalAlignMiddle ion-images button-clear button-dark'></button><span>Add photo</span>
+    </div>
+    <div ng-repeat='photo in user.profilePhotos track by $index'>
+      <div class='editProfilePhotos imagePlaceholder centerText' ng-if='!photoLoaded'>Loading images...</div> 
+      <img src='{{photo}}' class='editProfilePhotos' imageonload ng-show='photoLoaded'> 
+      <span class='deletePhoto' ng-click='deletePhoto($index)' ng-show='photoLoaded'>X</span>
+    </div>
+  </div>
+  
+  <div class='wrapper'>
+    <div>
+      <h3 class='centerText'>{{user.name}}<span ng-show='user.age'>, {{user.age}}</span></h3>
+
+      <ul class="list">
+      <div ng-cloak class="item item-divider item-assertive whitespaceNormal" ng-show='user.flags > 0'>
+        Note: Your account has been flagged by other users for inappropriate activity. If you are flagged again your profile may be suspended
+      </div>
+        <ion-toggle ng-model='vars.available'>
+          Available to meet people
+        </ion-toggle>
+    <form name='myForm'>
+    <div class="item item-divider ">
+        <span>About me</span>
+      </div>
+      <li class='item'>
+        <textarea type='textbox' class='aboutMeTextarea' ng-model='user.about' maxLength='500' placeholder="People are much likely to match with you if you write a bit about yourself and who you want to meet. This is only visible to potential matches, not to your friends" class='whitespaceNormal' name='about' ng-blur='updateField("about", "about")'/>
+        </textarea>
+      
+      </li>
+    <div class="item item-divider">
+      School
+    </div>
+    <span class='item whitespaceNormal'>
+      <div ng-repeat='school in user.education track by $index'>{{school.school.name}}
+      </div>
+    </span>
+    <div class="item item-divider" >
+      Occupation
+    </div>
+    <li class='item textWrap'>
+      <input type='text' ng-model='user.occupation' maxLength='50' placeholder='Astronaut' ng-blur='updateField("occupation", "occupation")'/>
+    </li>
+  <ul class="list">
+    <div class="item item-divider">
+      Height
+    </div>
+    
+    <li class='item'>
+        <input class='inputNumber' type='tel' ng-model='user.feet' ng-blur='updateField("feet", "feet")'/><span>ft</span>
+        <input class='inputNumber' type='tel' ng-model='user.inches' ng-blur='updateField("inches", "inches")'/><span>inches</span>
+      </li>
+      <div class="item item-divider">
+        Religion
+      </div>
+      <li class='item textWrap'>
+        <input type='text' ng-model='user.religion' maxLength='40' placeholder='' ng-blur='updateField("religion", "religion")'/>
+      </li>
+      
+      <div class="item item-divider">
+        Referral code
+      </div>
+      <li class='item textWrap'>
+        <input type='text' ng-model='user.referral' maxLength='250' placeholder='Enter code if you have one' ng-blur='updateField("referral", "referral")'/>
+      </li>
+    </form>
+      <div class="item item-divider" ng-show='user.friendRequests.length>0'>
+        Friend requests
+      </div>
+      <div class='item' ng-repeat='request in user.friendRequests'>
+        <img src='https://graph.facebook.com/{{request.fid}}/picture?redirect=1&height=60&width=60' class='feedListPhoto displayInlineBlock' style='vertical-align: middle'>
+        <span>{{request.name}}</span>
+        <div>
+          <span ng-click='requestAccept($index)'><button class='button verticalAlignMiddle button-clear ion-happy button-balanced' ></button>Accept</span>
+          <span ng-click='requestReject($index)'><button class='button verticalAlignMiddle button-clear ion-close' ></button>Reject</span>
+        </div>
+
+      </div>
+          
+  </ul>
+        
+
+    </ul>
+
+        </div>
+      </div>
+
+</div>
+         
+
+<div ng-show='viewingPage==="posts"' class='feedWrapper'>
+  <div ng-click='hideFirstTime()' ng-cloak class="marginTop75 marginRight10 marginLeft10 marginBottom10 feedFlash whitespaceNormal" ng-show='firstTime'>
+        Control who sees your posts. Posts can be visible just to people viewing your profile, on the Feed, or both
+        <div class='italic zTop'>Click to hide</div>
+    </div>
+      <div ng-repeat="post in posts track by $index">
+      <div class='item feedsize noBorderBottom'>
+        <span class='feedListContent' ng-click='viewStranger("poster","stranger",$index)'>
+          <img src='https://graph.facebook.com/{{post.posterFid}}/picture?redirect=1&height=60&width=60' class='feedListPhoto displayInlineBlock' ng-click='viewStranger("poster","stranger",$index)'>
+          <div class='displayInlineBlock'>
+            <div class='marginLeft10 feedName'>{{post.posterName}}</div>
+            <!-- <br> -->
+            <div class='marginLeft10 feedDate medGrayText'>{{post.date}}</div>
+          </div>
+          <span class='feedDate medGrayText' ng-show='post.atEvent'>@{{post.atEvent.name}}</span>
+          <span class='feedDate medGrayText' ng-show='post.place'><span class='ion-location'></span> {{post.place.name}}</span>
+          <div class='marginLeft10 feedName'>{{post.subjectName}}</div>
+          <div class='feedDate medGrayText whitespaceNormal' ng-show='post.users.length>0'>w/ 
+            <span ng-repeat='user in post.users'><span class='boldType' ng-click='viewStranger("subject", "stranger",$parent.$index, $index)'>{{user.name}}</span><span ng-show='post.users.length-1>$index'>,</span>
+            </span>
+          </div>
+          <div class='feedContent whitespaceNormal'>{{post.content}}</div>
+          <!-- <img ng-src="{{post.image.url}}" class='width320 feedImageMargin' ng-show='post.image && !post.image.midUrl' ng-class="{'landscapeHeight': post.image.orientation.landscape, 'portraitHeight': post.image.orientation.portrait}"> -->
+          <!-- <br> -->
+          <!-- {{post.image.midUrl}} -->
+          <!-- <div ng-show='post.image.midUrl'> -->
+            <img ng-src="{{post.image.url}}" class='width320 feedImageMargin'  ng-class="{'landscapeHeight': post.image.orientation.landscape, 'portraitHeight': post.image.orientation.portrait}">
+          <!-- </div> -->
+          <!-- <img ng-src='{{post.image.url}}' class='width320 feedImageMargin' ng-show='post.image' ng-class="{'landscapeHeight': post.image.orientation.landscape, portraitHeight: post.image.orientation.portrait}"> -->
+          <!-- <img ng-src='{{post.image.url}}' class='width320 feedImageMargin' ng-class="{'landscapeHeight': post.image.orientation.landscape, portraitHeight: post.image.orientation.portrait}"> -->
+        </span>
+        <div class='feedListContent floatRight displayInline' button='button' style='margin-top: 20px' ng-click='carrotClick($index, "posts")' >
+          <div class='floatRight' ng-show='post.likesLength>0'>{{post.likesLength}}</div>
+          <div class='carrot floatRight' ng-hide='post.noVoting'><span ng-hide='post.likes[user.fid]'>&#x25B2;</span><span ng-show='post.likes[user.fid]'>&#x25BC;</span></div>
+        </div>
+      </div>
+      <div class="noBorderBottom noBorderTop noBorderRight noBorderLeft " ng-show='post.posterFid === user.fid'>
+      <ion-toggle ng-model='post.publicPost' class='noBorder mimicInputLabel miniToggle'>
+        Visible on the public feed
+      </ion-toggle>
+        
+      </div>
+      <div class="input-label fullWidth noBorderBottom noBorderTop marginLeft10">Visible on my profile to:</div>
+      <div class="item item-checkbox feedCheckbox noBorderBottom noBorderTop">
+         <label class="checkbox" >
+           <input type="checkbox" ng-checked='checkStatus[$index].shareFriends' ng-click='sharePost($index, "shareFriends")' >
+         </label>
+         Friends
+      </div>
+      <div class="item item-checkbox feedCheckbox noBorderTop noBorderBottom">
+         <label class="checkbox">
+           <input type="checkbox" ng-checked='checkStatus[$index].shareNonFriends' ng-click='sharePost($index, "shareNonFriends")'>
+         </label>
+        Matches & public
+      </div>
+      
+    </div>
+    <div class='button centerItem button-clear button-positive' ng-click="loadMore()" ng-if='morePosts'>Load more</div>
+    <br>
+    </div>
+
+  </ion-content>
+</ion-view>
+
+      <!-- {{viewingPage}} -->
+      <!-- <div class='col tabButton tabButtonRight' ng-class="{'tabButtonSelected': viewingFriendTags==='explore'}" ng-click='viewingFriendTags="explore"'>Explore</div> -->
+      <!-- </div> -->
+  <!-- <ion-content has-header="true" padding="false"> -->
+  <!-- <ion-nav-buttons side="left">
+    <div ng-disabled='!myForm.$invalid' class='button button-clear colorLightGray 33x33 top0 positionFixed' ng-click='invalidAlert()' style='width:33px'> </div>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right" >
+    <button ng-disabled="myForm.$invalid" class='button button-icon ion-gear-a button-clear' ng-click='gotoFilter()'></button>
+    <div ng-disabled='!myForm.$invalid' class='button button-clear colorLightGray 33x33 top0 positionFixed' ng-click='invalidAlert()' style='width:33px'> </div>
+  </ion-nav-buttons> -->
+      <!-- <br><br><br><br> -->
+    
+    <!-- <div ng-click='hideFirstTime()' ng-cloak class="feedFlash whitespaceNormal" ng-show='firstTime'>
+         Click<span class='button ion-home button-clear button-dark' style='margin: -12px'></span>to see people's posts,<div class='button ion-aperture button-clear button-dark' style='margin: -12px'></div>to create a post, or<div class='button ion-android-friends button-clear button-dark' style='margin: -12px'></div>to view matches
+    </div> -->
+     <!-- <div>
+            <br>
+            <button ng-disabled="myForm.$invalid" class='button button-dark button-outline centerItem' ng-click='saveProfile()'>Save</button>
+            <button ng-click='gotoFilter()' class='button button-dark button-outline centerItem'>Settings</button> -->
+          <!-- </div> -->
+        <!-- <div class="item item-divider">
+          Friends say
+        </div> -->
+  <!--  TEMP TURNING THIS OFF
+  <div class='listPadding marginLeft10' >
+
+      <p ng-repeat='comment in user.comments track by $index' class='friendSayTags'>
+          <span ng-click='approvalPopup($index, "comments")' ng-show='comment && comment.approved'>
+            <span>"{{comment.text}}"</span>
+            <span class='tagFriend'>- {{comment.name}}</span>
+          </span>
+        </p>
+      <span ng-repeat='tag in user.customTags track by $index'>
+        <span class='friendSayTags' ng-show='tag && tag.approved'>#{{tag.text}}&nbsp
+        </span>
+        <span class='tagFriend' ng-show='tag && tag.approved'>{{tag.name}}&nbsp
+        </span>
+      </span>
+      <span ng-repeat='tag in userTags track by $index'>
+        <span class='friendSayTags' ng-show='tag'>#{{tag[0]}}&nbsp
+          <span class='tagFriend' ng-repeat='tagger in tag[1]' ng-click='deleteTag(tag[0], tagger, $parent.$index, $index)'>{{tagger}}&nbsp</span>
+        </span>
+      </span>
+    <h5>Tags not yet approved (if any): </h5>
+        <p ng-repeat='comment in user.comments track by $index' class='friendSayTags'>
+          <span ng-click='approvalPopup($index, "comments")' ng-show='comment && !comment.approved'>
+            <span>"{{comment.text}}"</span>
+            <span class='tagFriend'>- {{comment.name}}</span>
+          </span>
+        </p>
+        
+ 
+      <span ng-repeat='tag in user.customTags track by $index'>
+        <span ng-click='approvalPopup($index, "customTags")'>
+          <span class='friendSayTags' ng-show='tag && !tag.approved'>#{{tag.text}}&nbsp
+          </span>
+          <span class='tagFriend' ng-show='tag && !tag.approved'>{{tag.name}}&nbsp
+          </span>
+        </span>
+      </span>
+    </div> -->
+      <!-- <br> -->
+<!-- </div> -->
+      <!-- <div class="item item-divider">
+        My posts
+      </div> -->
+  <!-- <br><br> -->

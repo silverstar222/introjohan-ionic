@@ -1,0 +1,84 @@
+
+<div class="modal">
+  <ion-header-bar class="photoHeader">
+    <button class="button button-primary button-clear" ng-click="closeFilterModal()">Cancel</button>
+      <button class="button button-positive button-clear" ng-click="saveFilter()">Save Photo</button>
+  </ion-header-bar>
+  <ion-content padding="false" scroll='true'>
+    <div class='fullImagePage'>
+      <!-- <div ng-switch on="filter">
+        <img ng-switch-default src='/img/testimg.JPG' class='fullImage'>
+        <img ng-switch-when='sepia' vintage="sepia:true" src="/img/testimg.JPG" class='fullImage'/>
+        <img ng-switch-when='bw' vintage="desaturate:1" src="/img/testimg.JPG" class='fullImage' id='filter'/>
+        <img ng-switch-when='vign' vintage="vignette: 0.5" src="/img/testimg.JPG" class='fullImage' id='filter'/>
+        <img ng-switch-when='test' vintage="desaturate:0.7; vignette: 0.4" src="/img/testimg.JPG" class='fullImage' id='filter'/>
+        <img ng-switch-when='test2' vintage="contrast: -50; vignette: 0.4; sepia: true" src="/img/testimg.JPG" class='fullImage' id='filter'/>
+      </div> -->
+      <!-- <img src='img/testimg3.JPG' class='fullImage' id='imageToFilter'> -->
+      <!-- <img src='{{tempImage}}' id='imageToFilter'> -->
+      <!-- <a href="#" id="resetbtn" class="btn">Reset?</a>
+      <a href="#" id="brightnessbtn" class="btn">Sincity</a>
+      <a href="#" id="vintagebtn" class="btn">vintage</a> -->
+      <!-- <div class='button' ng-click='compress()'>compress</div> -->
+      <!-- <canvas id="canvas2" width=320></canvas> -->
+
+      <!-- {{dlimage}} -->
+        <!-- <canvas id='imageToFilter' class='fullImage' ></canvas> -->
+      <!-- <img ng-src='{{tempImage}}' class='fullImage' id='imageToFilter'> -->
+      <!-- <img ng-src='{{tempImage}}' class='fullImage'> -->
+      <!-- <img ng-src='{{backupImage}}' class='fullImage'> -->
+      <!-- <img ng-src="{{dlimage}}"> -->
+      <img id='filterous' src='{{tempImage}}' width='320'>
+      <div class='button' ng-click='filterous()'>filterous</div>
+      <!-- <canvas id="filterous" width=640></canvas> -->
+      <div class='button' ng-click='sepia()'>sepia</div>
+    <div class='button' ng-click='orangePeel()'>orangePeel</div>
+    <div class='button' ng-click='love()'>love</div>
+    <div class='button' ng-click='sinCity()'>sinCity</div>
+    <div class='button' ng-click='lomo()'>lomo</div>
+    <div class='button' ng-click='bw()'>bw</div>
+    <div class='button' ng-click='haze()'>haze</div>
+    <div class='button' ng-click='focus()'>focus</div>
+      <!-- <div class='button' ng-click='filter="sepia"'>sepia</div>
+      <div class='button' ng-click='filter="bw"'>lomo</div>
+      <div class='button' ng-click='filter="vign"'>clarity</div>
+      <div class='button' ng-click='filter="test"'>sinCity</div> -->
+      <!-- <div class='button' ng-click='setFilter("vintage")'>vintage</div>
+      <div class='button' ng-click='setFilter("lomo")'>lomo</div>
+      <div class='button' ng-click='setFilter("clarity")'>clarity</div>
+      <div class='button' ng-click='setFilter("sinCity")'>sinCity</div>
+      <div class='button' ng-click='setFilter("sunrise")'>sunrise</div>
+      <div class='button' ng-click='setFilter("crossProcess")'>crossProcess</div>
+      <div class='button' ng-click='setFilter("orangePeel")'>orangePeel</div>
+      <div class='button' ng-click='setFilter("love")'>love</div>
+      <div class='button' ng-click='setFilter("grungy")'>grungy</div>
+      <div class='button' ng-click='setFilter("jarques")'>jarques</div>
+      <div class='button' ng-click='setFilter("pinhole")'>pinhole</div>
+      <div class='button' ng-click='setFilter("oldBoot")'>oldBoot</div>
+      <div class='button' ng-click='setFilter("glowingSun")'>glowingSun</div>
+      <div class='button' ng-click='setFilter("hazyDays")'>hazyDays</div>
+      <div class='button' ng-click='setFilter("herMajesty")'>herMajesty</div>
+      <div class='button' ng-click='setFilter("nostalgia")'>nostalgia</div>
+      <div class='button' ng-click='setFilter("hemingway")'>hemingway</div>
+      <div class='button' ng-click='setFilter("concentrate")'>concentrate</div>
+      <br>
+      <div class='button' ng-click='saveFilter()'>save</div> -->
+      <!-- <img ng-src='{{tempImage}}' class='fullImage'> -->
+      <!-- <div ng-switch on="filter">
+        <img ng-switch-default ng-src='{{tempImage}}'  class='fullImage' id='imageToFilter'>
+        <img ng-switch-when='sepia' vintage="sepia:true" ng-src="{{tempImage}}" class='fullImage'/>
+        <img ng-switch-when='bw' vintage="desaturate:1" ng-src="{{tempImage}}" class='fullImage' id='filter'/>
+        <img ng-switch-when='vign' vintage="vignette: 0.5" ng-src="{{tempImage}}" class='fullImage' id='filter'/>
+        <img ng-switch-when='test' vintage="desaturate:0.7; vignette: 0.4" ng-src="{{tempImage}}" class='fullImage' id='filter'/>
+        <img ng-switch-when='test2' vintage="contrast: -50; vignette: 0.4; sepia: true" ng-src="{{tempImage}}" class='fullImage' id='filter'/>
+      </div> -->
+      <!-- <img src='{{tempImage}}' class='fullImage'> -->
+      <!-- <div>asdf</div> -->
+      <!-- <button>asdlfi</button> -->
+      <!-- <img ng-src='{{newimg}}' class='fullImage'> -->
+      <!-- {{tempImage}} -->
+
+    </div>
+
+  </ion-content>
+</div>

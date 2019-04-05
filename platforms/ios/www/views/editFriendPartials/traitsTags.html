@@ -1,0 +1,24 @@
+<ion-content has-header="false" padding="true" scroll='true' class='imageMargin'>
+<br>
+<h5>What is {{friend.name.split(' ')[0]}} like?</h5>
+
+<div ng-repeat='tag in tagsRandomTraits track by $index'>
+<span class='button button-positive tagSelectLabel marginLeft25' ng-class="{'button-outline': !selected.randomTraits[$index]}" ng-click='selectTag("randomTraits", $index)'>
+  #{{tag}}
+
+  </span>
+  </div>
+  <button class='button button-outline marginLeft25 button-positive tagSelectLabel' ng-click='moreTags("traits")'>...</button>
+  <button class='button editFriendNext floatRight ion-ios7-arrow-forward' ui-sref="tabs.editFriend.friendDetails"></button>
+  <label class="item item-input item-stacked-label noBorder">
+    <span class="input-label">Create tag</span>
+    <br>
+    <div>
+      <span>#</span><input class='noLeftPadding displayInline' ng-model='newTag.tag' type="text" maxLength='25' placeholder="{{placeholderText[2]}}">
+    </div>
+  </label>
+  <button ng-show='newTag.tag' class='button button-positive button-clear' ng-click='saveCustom()'>Save tag</button>
+  <!-- <button class='button button-clear button-energized-clear iconLarge floatRight ion-ios7-arrow-forward' ui-sref="tabs.editFriend.friendDetails"></button> -->
+
+</ion-content>
+

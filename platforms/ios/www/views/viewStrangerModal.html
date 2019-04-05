@@ -1,0 +1,44 @@
+
+<div class="modal">
+  <ion-header-bar class="bar-dark">
+    <button class="button button-icon button-clear ion-ios7-arrow-down colorLightGray fontSize15" ng-click="closeStrangerModal()"></button>
+    <img src='img/intro3_white_cropped.png' class='title centerItem headerLogo'>   
+  </ion-header-bar>
+  
+  <ion-content padding="false" scroll='true'>
+    <img class='height320 centerItem' ng-src='https://graph.facebook.com/{{stranger.fid}}/picture?redirect=1&height=640&width=640'>
+    <button class='floatRight button button-outline button-balanced marginRight10 marginTop10 roundedBorders' ng-click='like()' ng-hide='cantLike'>Meet</button>
+    <div class='centerText height30'><h3>{{stranger.name.split(' ')[0]}}</h3></div>
+    <div ng-click='viewMutualFriends()'><button class='button iconLarge verticalAlignMiddle button-clear ion-person-stalker button-dark' ></button>View Mutual Friends</div>
+    <div class='marginLeft10 marginBottom10' ng-cloak ng-show='stranger.distance && stranger.distance>2'>{{stranger.distance}} miles away</div>
+    <div class='marginLeft10 marginBottom10' ng-cloak ng-show='stranger.distance && stranger.distance<3'>Less than 2 miles away</div>
+
+    <div ng-repeat="post in strangerPosts track by $index" ng-show='viewingFriendTags'>
+      <div class='item feedsize'>
+        <!-- <span class='feedListContent' ng-click='viewStranger("poster","stranger",$index)'> -->
+      	<span class='feedListContent'>
+          <img src='https://graph.facebook.com/{{post.posterFid}}/picture?redirect=1&height=60&width=60' class='feedListPhoto displayInlineBlock' >
+          <div class='displayInlineBlock'>
+            <div class='marginLeft10 feedName'>{{post.posterName}}</div>
+            <div class='marginLeft10 feedDate medGrayText'>{{post.date}}</div>
+          </div>
+          <span class='feedDate medGrayText' ng-show='post.atEvent'>@{{post.atEvent.name}}</span>
+          <span class='feedDate medGrayText' ng-show='post.place'><span class='ion-location'></span> {{post.place.name}}</span>
+          <div class='marginLeft10 feedName'>{{post.subjectName}}</div>
+          <div class='feedDate medGrayText whitespaceNormal' ng-show='post.users.length>0'>w/ 
+            <!-- <span ng-repeat='user in post.users'><span class='boldType' ng-click='viewStranger("subject", "stranger",$parent.$index, $index)'>{{user.name}}</span><span ng-show='post.users.length-1>$index'>,</span>
+            </span> -->
+            <span ng-repeat='user in post.users'><span class='boldType'>{{user.name}}</span><span ng-show='post.users.length-1>$index'>,</span>
+            </span>
+          </div>
+          <div class='feedContent whitespaceNormal'>{{post.content}}</div>
+          <img ng-src="{{post.image.url}}" class='width320 feedImageMargin' ng-show='post.image' ng-class="{'landscapeHeight': post.image.orientation.landscape, 'portraitHeight': post.image.orientation.portrait}">
+        </span>
+        <div class='feedListContent' button='button' style='float: right; display: inline; margin-top: 20px' ng-click='carrotClick($index, "strangerPosts")' >
+          <div class='floatRight' ng-show='post.likesLength>0'>{{post.likesLength}}</div>
+          <div class='carrot floatRight' ng-hide='post.noVoting'><span ng-hide='post.likes[user.fid]'>&#x25B2;</span><span ng-show='post.likes[user.fid]'>&#x25BC;</span></div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</div>

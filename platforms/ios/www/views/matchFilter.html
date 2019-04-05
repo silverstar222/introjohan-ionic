@@ -1,0 +1,84 @@
+<ion-view title="Settings">
+  
+  <ion-content has-header="true" padding="false" scroll='true'>
+  <ion-nav-buttons side="left">
+    <button class="button button-clear ion-ios7-arrow-left colorLightGray fontSize15" ng-click="back()"></button>
+  </ion-nav-buttons>
+  <br>
+  <div class="list">
+    <div class="item item-divider">
+      My account info
+    </div>
+    <div class='item'>
+      Email (from Facebook)
+      <span class="item-note">
+        {{user.email}}
+      </span>
+    </div>
+    <div class='item'>
+      User ID
+      <span class="item-note">
+        {{user.fid}}
+      </span>
+    </div>
+    <div class="item item-divider">
+      Add a friend
+    </div>
+    <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <input type="text" placeholder="By email" ng-model='newFriend.email'>
+      </label>
+      <button class="button button-small button-clear" ng-click='addFriend("email")' style='background: #FAFAFA'>
+        Add
+      </button>
+      <span class='marginLeft10'></span>
+      <label class="item-input-wrapper">
+        <input type="text" placeholder="By User ID" ng-model='newFriend.fid'>
+      </label>
+      <button class="button button-small button-clear" ng-click='addFriend("fid")' style='background: #FAFAFA'>
+        Add
+      </button>
+    </div>
+
+    <div class="item item-divider">
+      Match settings
+    </div>
+      <div class='marginTop10 marginLeft10'>Distance: {{user.filters.distance}} miles</div>
+      <div class="item range range-energized noBorderTop margin">
+        <div class='marginLeft10'>10</div>
+        <input type="range" name="Distance" min="10" max="200" ng-model='user.filters.distance' ng-blur='save("distance")'>
+        200
+      </div>
+    <li class="item item-checkbox whitespaceNormal">
+       All ages (includes people who don't have age set)
+       <label class="checkbox">
+         <input type="checkbox" ng-model='user.filters.allAges' ng-blur='save("allAges")'>
+       </label>
+    </li>
+    <div ng-hide='user.filters.allAges' class="item item-input-inset">
+      <span class="input-label">Min age</span>
+      <label  class="item-input-wrapper">
+        <input type='tel' ng-model='user.filters.minAge' ng-blur='save("minAge")'>
+      </label>
+    </div>
+    <div ng-hide='user.filters.allAges' class="item item-input-inset">
+      <span class="input-label">Max age</span>
+      <label class="item-input-wrapper">
+        <input  type='tel' ng-model='user.filters.maxAge' ng-blur='save("maxAge")'>
+      </label>
+    </div>
+
+    <label class="item item-input item-select">
+    <div class="input-label">
+      Show me
+    </div>
+    <select ng-model='user.filters.gender' ng-blur='save("gender")'>
+      <option>Men</option>
+      <option>Women</option>
+      <option>Both</option>
+    </select>
+  </div>
+  <br>
+
+</ion-content>
+</ion-view>

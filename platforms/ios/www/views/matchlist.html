@@ -1,0 +1,17 @@
+
+<ion-view title="{{introLogo}}" >
+  <ion-content has-header="true" has-footer="false" padding="false" scroll="true">
+    
+    <div class='list'>
+      <div ng-repeat='match in allUsers'>
+        <div class='item friendListSize' id='{{$index}}' ng-click='selectMatch($index)'>
+          <img src='https://graph.facebook.com/{{match.fid}}/picture?redirect=1&height=50&width=50' class='friendListPhoto centerVertical'>
+          <span class='marginLeft10'>{{match.name.split(' ')[0]}}</span>
+          <span ng-show='match.unseenChat>0'class='listBadge'><span>{{match.unseenChat}}</span></span>
+
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+         

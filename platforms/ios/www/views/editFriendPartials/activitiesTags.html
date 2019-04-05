@@ -1,0 +1,25 @@
+<ion-content has-header="false" padding="true" scroll='true' class='imageMargin'>
+<br>
+<h5>What's {{friend.name.split(' ')[0]}} do?</h5>
+
+<div ng-repeat='tag in tagsRandomActivities track by $index'>
+<span class='button button-balanced tagSelectLabel marginLeft25' ng-class="{'button-outline': !selected.randomActivities[$index]}" ng-click='selectTag("randomActivities", $index)'>
+<!-- <button class='button button-assertive tagSelectLabel' ng-class="{'button-outline': !selected.looks[$index]}" ng-click='selectRandomTagLooks($index)'> -->
+  #{{tag}}
+
+  </span>
+  </div>
+  <button class='button button-outline marginLeft25 button-balanced tagSelectLabel' ng-click='moreTags("activities")'>...</button>
+    <button class='button editFriendNext floatRight ion-ios7-arrow-forward' ui-sref="tabs.editFriend.traitsTags"></button>
+  <label class="item item-input item-stacked-label noBorder">
+    <span class="input-label">Create tag</span>
+    <br>
+    <div>
+      <span>#</span><input class='noLeftPadding displayInline' ng-model='newTag.tag' type="text" maxLength='25' placeholder="{{placeholderText[1]}}">
+    </div>
+  </label>
+    <button ng-show='newTag.tag' class='button button-positive button-clear' ng-click='saveCustom()'>Save tag</button>
+	  <!-- <button class='button button-clear button-energized-clear iconLarge floatRight ion-ios7-arrow-forward' ui-sref="tabs.editFriend.traitsTags"></button> -->
+
+
+</ion-content>

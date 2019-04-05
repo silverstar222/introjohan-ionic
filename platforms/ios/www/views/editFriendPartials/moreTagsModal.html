@@ -1,0 +1,16 @@
+<div class="modal">
+  <ion-header-bar class="bar-dark">
+    <!-- <button class="button button-primary button-clear" ng-click="closeModal()">Cancel</button> -->
+    <button class="button button-icon button-clear ion-ios7-arrow-back" ng-click="closeTagsModal()"></button>
+    <img src='https://graph.facebook.com/{{friend.fid}}/picture?redirect=1&height=50&width=50' class='chatHeaderPhoto centerItem title'>
+   
+  </ion-header-bar>
+  <ion-content padding="true" scroll='true'>
+  <div class='bodyWrapper'>
+    <button class='button tagSelectLabel' ng-class="{'button-outline': !selected.{{moreTagsType}}[$index], 'button-assertive': {{moreTagsType==='looks'}}, 'button-balanced': {{moreTagsType==='activities'}}, 'button-positive': {{moreTagsType==='traits'}}}" ng-repeat='tag in moreTagsArr() track by $index' ng-click='selectTag(moreTagsType,$index)'>#{{tag}}
+    </button>
+  </div>
+  </ion-content>
+   
+</div>
+

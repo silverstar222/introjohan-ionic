@@ -1,0 +1,18 @@
+<ion-content has-header="false" padding="false" scroll='true' class='introFriendImageMargin'>
+<label class="item item-input item-stacked-label">
+      <span class="input-label">Create tag</span>
+      <br>
+      <span>#</span><input class='noLeftPadding displayInline' ng-model='newTag.tag' type="text" maxLength='25' placeholder="LovesSmellfies">
+    </label>
+    <label class="item item-input item-stacked-label">
+      <span class="input-label noBorderBottom">Select tags</span>
+      
+  </label>
+  <button class='button button-assertive tagSelectLabel' ng-class="{'button-outline': !selected.looks[$index]}" ng-repeat='tag in tagsLooks' ng-click='selectTagLooks($index)'>#{{tag}}
+  </button>
+  <button class='button button-balanced tagSelectLabel' ng-class="{'button-outline': !selected.traits[$index]}" ng-repeat='tag in tagsTraits' ng-click='selectTagTraits($index)'>#{{tag}}
+  </button>
+  <button class='button button-positive tagSelectLabel' ng-class="{'button-outline': !selected.activities[$index]}" ng-repeat='tag in tagsActivities' ng-click='selectTagActivities($index)'>#{{tag}}
+  </button>
+  </div>
+</ion-content>

@@ -1,0 +1,58 @@
+<div class="modal friendCardsIntroModal" style='background: black'>
+  <!-- <ion-content padding="false" scroll='true'>
+  <div class='fixedItem fullWidth whitespace editFriendMargin' ng-class="{'borderBottom': location()!=='/tab/editFriend/introFriend'}">
+      <img class='height100 friendPicRounded verticalTop marginLeft10' src='https://graph.facebook.com/{{friend.fid}}/picture?redirect=1&height=130&width=130'>
+    <div class='inlineBlock'>
+      <h4 class='centerVertical marginLeft10 friendNamePx textWrap'>{{friend.name}}</h4> -->
+
+    <!-- <div class='fixedItem fullWidth whitespace introFriendImageMargin displayTable marginLeft10'> -->
+  <div class='fixedItem fullWidth displayTable marginLeft10'>
+</div>
+<div class='whitespace displayTable fullWidth' >
+  <div class="item item-divider item-input-inset searchWrapper" style='padding: 0; border-top-left-radius: 3px'>
+  <!-- <div ng-class="{introHighlight: highlight}" style='height: 44px'> -->
+  <div style='height: 44px'>
+    <div ng-show='!match' class='inlineBlock'>
+      <div class='friendPicRounded centerText questionMark' style='height: 40px; width: 40px; padding-top: 0; 1.5em; line-height: 40px; margin: 2px 2px 2px 15px'><span>?</span></div>
+    </div>
+    <div ng-show='match' class='inlineBlock' >
+      <img class='friendPicRounded' src='https://graph.facebook.com/{{match.id}}/picture?redirect=1&height=40&width=40'  style='height: 40px; width: 40px; padding-top: 0; margin: 2px 2px 2px 15px'>
+    </div>
+    <!-- <h4 class='centerVertical marginLeft10' ng-click='introFriends()'>{{match.name}}</h4> -->
+  </div>
+        <label class="item-input-wrapper searchBox" style='margin: 0 5px 0 12px' ng-show='!friendSelection'>
+          <button class='icon ion-ios7-search-strong button-clear'></button>
+          <input ng-keypress='keyPress()' type="text" placeholder="Search" ng-model="search.name">
+          
+        </label>
+        <button class='button button-clear button-positive' ng-show='friendSelection' ng-click='introFriends()'>Make an Intro</button><button class='button button-clear button-stable' ng-show='friendSelection' ng-click='cancelSelection()'>Cancel</button>
+      </div>
+    </div>
+
+<!-- <div style='overflow: scroll'> -->
+<ion-content has-header="false" padding="true" scroll='true' style='height: 234px; margin-top: 44px'>
+
+      <!-- {{friendList}} -->
+      <!-- <div ng-repeat='friend in friendList'>{{friend.name}}</div> -->
+<div ng-repeat="friend in (filtered.friends = (friendList | orderBy:'name' | filter:search:strict | limitTo : limit))">
+        <!-- <div ng-show="([friend] | filter:search:strict).length > 0" class='item' id='{{$index}}' ng-click='selectFriend($index)'> -->
+        <div class='item friendListSize' ng-click='selectFriend(friend)'>
+          <!-- <div class='item friendListSize' id='{{$index}}' ng-click='selectFriend($index)'> -->
+            <!-- <img ng-show='friend.profilePhotos[0]' src='{{friend.profilePhotos[0]}}' class='friendListPhoto'> -->
+            <!-- <img ng-hide='friend.profilePhotos[0]' src='https://graph.facebook.com/{{friend.fid}}/picture?redirect=1&height=50&width=50' class='friendListPhoto'> -->
+            <!-- <img src='https://graph.facebook.com/{{friend.id}}/picture?redirect=1&height=50&width=50' class='friendListPhoto'> -->
+            <img src='https://graph.facebook.com/{{friend.id}}/picture?redirect=1&height=50&width=50' class='friendListPhoto centerVertical'>
+            <span class='marginLeft10'>{{friend.name}}</span>
+          </div>
+        </div>
+
+    <ion-infinite-scroll
+    on-infinite="loadMore()"
+    distance="15%"
+    icon=''
+    >
+  </ion-infinite-scroll>
+
+  <ion-content>
+  <!-- </div> -->
+</div>

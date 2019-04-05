@@ -1,0 +1,53 @@
+<ion-view hide-nav-bar="true">
+<div class='friendCardsPage' no-scroll>
+  
+  <swipe-cards>
+    <swipe-card on-card-swipe="cardSwiped()" id="start-card" ng-show='firstTime'>
+      Tag a friend, or swipe down to see more friends
+    </swipe-card>
+    <swipe-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-card-swipe="cardSwiped($index)">
+      <div>
+        <p class="title">
+          What's <span class='highlightText'>{{card.name}}</span> {{card.title}} 
+        </p>
+        <span class='button ion-ios7-information-outline button-clear iconLarge cardInfoIcon' ng-click='viewDetails()'></span>
+        <div class="image" ng-click='viewDetails()'>
+          <img ng-src="{{card.image}}">
+        </div>
+        
+        <div ng-show='randomType === 0' ng-repeat='tag in tagsRandomLooks track by $index'>
+        <span class='button button-assertive tagSelectLabel cardCol' ng-class="{'button-outline': !selected.randomLooks[$index]}" ng-click='selectTag("randomLooks", $index)'>
+          #{{tag}}
+          </span>
+          </div>
+          <div ng-show='randomType === 1' ng-repeat='tag in tagsRandomActivities track by $index'>
+        <span class='button button-balanced tagSelectLabel cardCol' ng-class="{'button-outline': !selected.randomActivities[$index]}" ng-click='selectTag("randomActivities", $index)'>
+          #{{tag}}
+          </span>
+          </div>
+          <div ng-show='randomType === 2' ng-repeat='tag in tagsRandomTraits track by $index'>
+        <span class='button button-positive tagSelectLabel cardCol' ng-class="{'button-outline': !selected.randomTraits[$index]}" ng-click='selectTag("randomTraits", $index)'>
+          #{{tag}}
+          </span>
+          </div>
+          <div >
+        <span class='button button-assertive button-outline tagSelectLabel cardCol grayText' ng-click='allTags()'>
+          More tags
+          </span>
+          </div>
+            <div class="item item-input-inset cardSearchBox">
+              <label class="item-input-wrapper">
+                <span>#</span><input ng-model='newTag.tag' type="text" maxLength='25' placeholder="{{placeholderText[0]}}">
+              </label>
+              <button class="button button-small button-clear saveTextButton" ng-click='saveCustom()'>
+                Tag
+              </button>
+            </div>
+
+      </div>
+      
+    </swipe-card>
+  </swipe-cards>
+</div>
+</ion-view>
+

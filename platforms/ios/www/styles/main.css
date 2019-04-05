@@ -1,0 +1,1096 @@
+/*
+orange: #ff7400;
+light orange: #F5D0A9
+mid orange: #FE9A2E;
+dark gray: #4f4943;
+med gray: #888888;
+lighter gray: #D0D0D0;
+very light gray: #FAFAFA
+dark red: #610B0B;
+brown: #685e57;
+blue: #4a87ee;
+*/
+
+body {
+    background: #fafafa;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+}
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+.wrapper {
+    padding-top: 20px;
+    /*width: 320px;*/
+    /*text-wrap: normal;*/
+}
+.bar-dark, .tabs {
+  background-color: #ff7400 !important;
+  color: white;
+  border-color: #ff7400 !important;
+  border-bottom: 1px solid #ff7400;
+  background-image: none !important;
+}
+.colorWhite {
+  color: white;
+}
+
+.bar .button {
+  color: white;
+}
+.whitespaceNormal {
+  white-space: normal;
+}
+.iconWhite {
+  color: white !important;
+}
+.iconOrange {
+  color: #ff7400 !important;
+}
+.smallText {
+  font-size: 0.9em;
+}
+.badgeChat {
+  position: absolute;
+  left: 218px; 
+  top: -12px;
+  color: white !important;
+  font-size: 0.9em;
+}
+.badgeProfile {
+  position:absolute; 
+  left: 288px; 
+  top: -12px;
+  color: white !important;
+  font-size: 0.9em;
+}
+.highlightText {
+  color: #ff7400;
+}
+.highlightTextMid {
+  color: #FE9A2E;
+}
+.introSlideText {
+  z-index: 1;
+  color: white;
+  position: absolute;
+  
+  background: rgba(0, 0, 0, 0.4);
+  /*font-size: 2em;*/
+  padding: 10px;
+}
+.slideTextLow {
+  top: 160px;
+  left: 10px;
+}
+.slideTextHigh {
+  top: 20px;
+  right: 10px;
+  text-align: right;
+}
+@media (min-width: 700px) {
+  .mediaQ {
+    max-width: 400px;
+    left: 190px;
+  } 
+}
+.centerText {
+  text-align: center;
+}
+.questionMark {
+  font-size: 3em;
+  color: #F5D0A9;
+  padding-top: 44px;
+  background-color: #FAFAFA;
+}
+.introHighlight {
+  background-color: #FBEFF2;
+  height: 100px;
+  margin-right: 15px;
+  border-radius: 15px;
+  display: normal;
+}
+.centerItem {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+}
+.colorMedGray {
+  color: #888888;
+}
+.italic {
+  font-style: italic;
+}
+.centerVertical {
+  height: 100% !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
+}
+.verticalTop {
+  vertical-align: top;
+}
+.fullWidth {
+  width: 100%;
+}
+.loginWrapper {
+  margin: 405px 10px 10px 10px;
+}
+.orangeBackground {
+  background-color: white;
+}
+.loginText {
+  color: #4f4943;
+}
+.mainWrapper > .scroll.padding {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.logoHeight {
+  height: 35px;
+}
+.logoMenu {
+  height: 25px;
+}
+.bodyWrapper {
+  margin: 10px;
+}
+.matchBodyWrapper {
+  margin: 330px 10px 10px 10px;
+}
+.matchIntroFlash {
+  width: 100%;
+  margin-bottom:10px;
+  padding: 8px;
+  text-align: center;
+  background: rgba(255, 116, 0, .7);
+}
+.feedFlash {
+  background: rgba(255, 116, 0, .7);
+  padding: 10px;
+  margin-top: 30px;
+}
+.zTop {
+  z-index: 2;
+}
+.z3 {
+  z-index: 3;
+}
+.z4 {
+  z-index: 4;
+}
+.slideBoxTop {
+  margin-top: 44px !important;
+}
+.slider-pager{
+  bottom: 0px;
+}
+.fbLogin {
+  width: 202px;
+  margin-top: 10px;  
+}
+.test {
+  color: red;
+}
+.friendFeaturePhoto {
+  height: 90px;
+  border-radius: 12px;
+}
+.friendListPhoto {
+  height: 40px;
+  width: 40px;
+  border-radius: 8px;
+  /*padding: 4px;*/
+  /*margin: 4px 0px 4px 20px;*/
+  /*padding-right: 5px;*/
+}
+.feedListPhoto {
+  height: 35px;
+  width: 35px;
+  border-radius: 8px;
+  vertical-align: top;
+  /*padding: 4px;*/
+  /*margin: 4px 0px 4px 20px;*/
+  /*padding-right: 5px;*/
+}
+.feedName {
+  font-size: 0.8em;
+  line-height: 1.3em;
+  font-weight: 600;
+}
+.feedDate {
+  font-size: 0.7em;
+}
+.feedContent {
+  font-size: 1em;
+  margin-top: 4px;
+  color: #ff7400;
+}
+.feedCheckbox {
+  font-size: 0.9em;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.feedListContent {
+  display: inline-block !important;
+  vertical-align: top !important;
+}
+.colorLightGray {
+  color: #FAFAFA;
+}
+.friendProfileIcon {
+  height: 32px;
+  margin: 0px 5px 0 5px;
+}
+.friendProfileFontIcon {
+  font-size: 32px;
+  color: #888888;
+  margin: 8px;
+}
+.friendTagsIcon {
+  font-size: 32px;
+  color: #888888;
+  margin-left: -2px !important;
+  margin-top: -5px !important;
+  margin-right: -3px !important;
+}
+.friendNamePx {
+  width: 190px !important;
+  height: 45px !important;
+}
+.listBadge {
+  background: #D8D8D8;
+  padding: 2px 7px 2px 7px;
+  margin: 0px 5px 0px 15px;
+  border-radius: 16px;
+  font-size: 0.8em;
+}
+.marginRight10 {
+  margin-right: 10px;
+}
+.marginTop10 {
+  margin-top: 10px;
+}
+.marginTopBottom5 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.marginTop30 {
+  margin-top: 30px;
+}
+.marginTop15 {
+  margin-top: 15px;
+}
+.marginTop20 {
+  margin-top: 20px;
+}
+.marginBottom10 {
+  margin-bottom: 10px !important;
+}
+.marginLeft25 {
+  margin-left: 25px !important;
+}
+.marginTop75 {
+  margin-top: 75px;
+}
+.lineHeight30 {
+  line-height: 30px;
+}
+.height30 {
+  height: 20px;
+}
+.height40 {
+  height: 40px;
+}
+.width90 {
+  width: 180px !important;
+}
+.backgroundNone {
+  background: none;
+}
+.fixedSearch {
+  /*top: 154px;*/
+  background-color: white;
+  top: 64px;
+  /*left: 50px;*/
+  position: absolute;
+  width: 100%;
+  z-index: 3;
+}
+.33x33 {
+  min-width: 33px !important;
+  width:33px !important;
+  height: 33px;
+}
+.top0 {
+  top: 0;
+}
+.positionFixed {
+  position: fixed;
+}
+.searchBox {
+  background-color: white;
+  color: gray;
+}
+.searchWrapper {
+  background-color: light gray !important;
+}
+.searchMargin{
+  /*margin-top: 155px;*/
+  margin-top: 40px;
+}
+.tagLabel {
+  margin: 3px;
+  white-space: normal;
+}
+.tagSelectLabel {
+  line-height: 30px !important;
+  min-height: 30px !important;
+  margin-top: 3px !important;
+  margin-bottom: 3px;
+  border-radius: 18px !important;
+  padding: 0px 3px !important;
+  font-size: 13px !important;
+  margin-right: 3px;
+  margin-left: 2px;
+  /*margin: 32px;*/
+  /*white-space: normal;*/
+}
+.saveTextButton {
+  color: black !important;
+  font-size: 0.8em;
+  /*font-weight: 500;*/
+}
+.displayInline{
+  display: inline !important;
+}
+.displayBlock {
+  display: block;
+}
+.displayInlineBlock {
+  display: inline-block;
+}
+.noLeftPadding {
+  padding-left: 0 !important;
+}
+.noBorderBottom {
+  border-bottom: none !important;
+}
+.noBorderTop {
+  border-top: none !important;
+}
+.noBorderRight {
+  border-right: none;
+}
+.noBorderLeft {
+  border-left: none;
+}
+
+.friendSayTags {
+  color: #610B0B;
+  line-height: 2em;
+  /*color:  #151B54;*/
+}
+.tagFriend {
+  color: #888888;
+}
+.friendPicRounded {
+  border-radius: 15px;
+}
+
+.hero-unit {
+    margin: 50px auto 0 auto;
+    width: 300px;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    background-color: #eee;
+    border-radius: 6px;
+    padding: 60px;
+}
+
+.hero-unit h1 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+.albumIcon {
+  max-width: 200px;
+  max-height: 200px;
+}
+.albumImages {
+   -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap ;
+ }
+ .albumImage {
+  /*padding: 0px;*/
+  width: 65px;
+ }
+
+ .center-cropped {
+    width: 65px;  
+    height: 65px; 
+    background-position: center center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/* Set the image to fill its parent and make transparent */
+.center-cropped img {
+   min-height: 100%;
+   min-width: 100%;
+
+   /* IE 8 */
+   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+   /* IE 5-7 */
+   filter: alpha(opacity=0);
+   /* modern browsers */
+   opacity: 0;
+}
+/*.fullImage {
+  width: 100%;
+}*/
+.verticalAlignMiddle {
+  vertical-align: middle;
+}
+.verticalAlignTop {
+  vertical-align: top;
+}
+.height30 {
+  height: 30px;
+}
+.fullImage {
+  width: 100%; 
+  vertical-align: middle; 
+}
+.fullImagePage {
+  width: 100%; 
+  height: 1136px;
+  background-color: black;
+}
+.photoHeader {
+  background: black !important;
+  /*opacity: 0;*/
+}
+.deletePhoto {
+  z-index: 2;
+  position: absolute;
+  left: 272px;
+  /*left: 127px;*/
+  background: rgba(136,136,136, .4);
+  color: white;
+  padding: 5px 11px 5px 11px;
+  border-radius: 30px;
+}
+.deletePost {
+  background: rgba(136,136,136, .4);
+  color: white;
+  padding: 1px 8px 3px 8px;
+  border-radius: 30px;
+}
+.editProfilePhotos {
+  width: 290px;
+  border-radius: 7px;
+  margin-left: 5px;
+}
+.imagePlaceholder {
+  background: #D0D0D0;
+  height: 290px;
+  padding-top: 140px;
+  color: #E0E0E0;
+}
+.width320 {
+  width: 320px;
+}
+.width300 {
+  width: 300px;
+}
+.height320 {
+  height: 320px;
+}
+.loginSlideBoxHeight {
+  height: 400px;
+}
+.height120 {
+  height: 120px !important;
+}
+.height100 {
+  height: 100px !important;
+}
+.width100 {
+  width: 100px;
+}
+.headerLogo {
+  height: 25px !important;
+  top: 8px !important;
+}
+.filterGear {
+  font-size: 30px !important;
+  z-index: 3 !important;
+  position: absolute;
+  left: 305px !important;
+  background: rgba(0, 0, 0, 0.8);
+  
+}
+.editPageIcon {
+  vertical-align: middle;
+}
+.inputNumber {
+  padding-left: 15px;
+  width: 40px;
+  /*float: left;*/
+  display: inline !important;
+  text-align: middle;
+}
+.inputLabel, .boldType {
+  font-weight: bold;
+}
+.inputDate {
+  width: 150px;
+  text-align: center;
+  height: 1em;
+}
+.chatBubble {
+  display: inline-block;
+  border-radius:0.6rem;
+  min-width: 0px;
+  max-width: 90%;
+  background:#158ffe;
+  color:#fff;
+  padding: 0.5rem;
+  font-size:.9rem;
+  margin-bottom: 0px;
+}
+.chatBubbleGrey {
+  background: #D8D8D8;
+  color: black;
+}
+.clearBoth {
+  clear: both;
+}
+.chatLabel {
+  margin: 12px 0px 8px 0px !important;
+  font-size: 0.9em !important;
+}
+.chatDate {
+  font-size: 0.8em;
+  color: #A4A4A4;
+}
+.chatHeaderPhoto {
+  border-radius: 35px;
+  border-color: #F6E3CE;
+  border-style: solid;
+  border-width: 3px;
+  width: 43px;
+}
+.chatInput {
+  width: 255px;
+  border-radius: 6px;
+  padding-left: 9px;
+  margin-right: 6px;
+}
+.fixedItem {
+  position: fixed;
+  z-index: 2;
+}
+.introFriendImageMargin {
+  margin-top: 125px !important;
+}
+.introFriendSearchMargin {
+  margin-top: 231px !important;
+}
+.introFriendButtons {
+  margin: 3px auto 3px auto;
+  display: block;
+  width:60%;
+  /*margin-right*/
+}
+.editFriendMargin {
+  margin: 20px 10px 0px 0px;
+}
+.grayText {
+  color: #4f4943 !important;
+}
+.medGrayText {
+  color: #888888 !important;
+}
+.borderBottom {
+  border-bottom: thin solid #D8D8D8;
+}
+.headerMargin {
+  margin-top: 60px;
+}
+.imageMargin {
+  margin-top: 118px !important;
+}
+.introFriendContentMargin {
+  margin-top: 280px !important;
+}
+.classstyle {
+  font-weight: bold;
+}
+.visited {
+  font-weight: bold !important;
+}
+.inlineBlock {
+  display: inline-block;
+}
+.marginLeft10 {
+  margin-left: 10px;
+}
+.margin10 {
+  margin: 10px;
+}
+.friendListSize {
+  padding: 8px 15px;
+  height: 56px;
+}
+.feedSize {
+  padding: 8px 10px;
+  min-height: 71px;
+}
+.marginRight10 {
+  margin-right: 10px;
+}
+.displayTable {
+  display: table;
+}
+.whitespace {
+  background: white;
+}
+.badge {
+  margin-right: 4px !important;
+  margin-left: -4px !important;
+}
+.button-energized {
+  color: #ff7400 !important;
+  border-color: #ff7400 !important;
+}
+.button-energized-clear {
+  color: #ff7400 !important;
+  /*border-color: #ff7400 !important;*/
+}
+.noBorder {
+  border: none;
+}
+.margin0 {
+  margin: 0 !important;
+}
+.padding0 {
+  padding: 0 !important;
+}
+.paddingLeft0 {
+  padding-left: 0px;
+}
+.margin5 {
+  margin: 5 !important;
+}
+.slider, .slider-slides, .slider-slide {
+    width: 100%;
+    height: 320px;
+    background: black;
+}
+.loginSlideBox .slider, .loginSlideBox  .slider-slides, .loginSlideBox  .slider-slide {
+    width: 100%;
+    height: 400px;
+    background: white;
+}
+.iconLarge {
+  font-size: 2em;
+}
+.fontSize3 {
+  font-size: 3em;
+}
+.fontSize15 {
+  font-size: 1.5em !important;
+}
+.fontSize25 {
+  font-size: 2.5em !important;
+}
+.editFriendNext {
+  color: white;
+  background: #ff7400;
+  font-size: 2em;
+  padding: 0px;
+  width: 30px;
+  line-height: 1em;
+  border-radius: 15px !important;
+  min-height: 0px;
+  min-width: 0px;
+  border: none;
+}
+.floater {
+  z-index: 4;
+  border: 1px;
+  border: black;
+  padding: 15px;
+
+  /*height: 200px;*/
+  width: 240px;
+  position: absolute;
+  background: black;
+  color: white;
+  left: 40px;
+  top: 180px;
+  border-radius: 10px;
+}
+.grey {
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.25);
+  position: absolute;
+  /*opacity: 50%;*/
+}
+.nobutton {
+  float: left;
+}
+.floatRight {
+  float: right;
+}
+.floatLeft {
+  float: left;
+}
+.largerFont {
+  font-size: 1.7em;
+}
+.spacer {
+  /*width: 50px;*/
+  color: white;
+}
+.textWrap {
+  white-space: normal !important;
+}
+.listPadding {
+  padding: 0 8px 15px 8px;
+}
+
+.cardCol {
+  float: left;
+  width: 49%;
+  margin: 0 0 0 2px;
+}
+.swipeCardDetails {
+  position: fixed;
+  -webkit-transform: scale(1,1);
+  left: 50%;
+  top: 47%;
+  width: 305px;
+  height: 166px;
+  margin-left: -152px;
+  margin-top: 55px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  white-space: normal;
+  -webkit-animation-fill-mode: forwards;
+  background: rgba(250,250,250,0.85);
+  z-index: 10;
+  overflow: scroll;
+   
+}
+.friendDetailsModal {
+  top: 287px;
+  margin: 0px 8px 0px 5px;
+  overflow: scroll;
+  border-top: solid #4a87ee 3px;
+  border-radius: 8px;
+  height: 284px !important; 
+  min-height: 284px !important;
+}
+.friendCardsIntroModal {
+  top: 287px;
+  margin: 0px 8px 0px 5px;
+  overflow: scroll;
+  border-top: solid #6c3 3px;
+  -webkit-animation: myfirst 0.5s;
+  border-radius: 6px;
+}
+
+
+@-webkit-keyframes myfirst {
+    from {top: 100%;}
+    to {top: 307px;}
+    }
+.cardInfoIcon {
+  position: fixed;
+  left: 268px;
+  top: -3px;
+}
+
+/* JELLY SWIPE CSS */
+.friendCardsPage {
+  background-color: black;  
+  width:100%;
+  height:100%;
+  position: fixed;
+}
+
+.pane {
+  /*background-color: #333;*/
+}
+.swipe-cards {
+  position: fixed;
+}
+
+.swipe-card {
+  display: none;
+  position: fixed;
+  -webkit-transform: scale(1,1);
+  left: 50%;
+  top: 47%;
+  width: 310px;
+  height: 470px;
+  margin-left: -155px;
+  margin-top: -235px;
+  box-sizing: border-box;
+  background-color: rgb(255,255,255);
+  border-radius: 8px;
+  overflow: hidden;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.swipe-card .title {
+  height: 25px;
+  margin-left: 8px;
+  padding: 5px;
+  line-height: 25px;
+  font-weight: bold;
+  /*color: #444;*/
+}
+.swipe-card .image {
+  overflow: hidden;
+  max-height: 255px;
+  height: 255px;
+}
+.swipe-card .button {
+  border: none;
+}
+.swipe-card .image img {
+  width: 100%;
+  border-radius: 0px 0px 4px 4px;
+}
+
+#start-card {
+  color: #fff;
+  background-color: #30BD8A;
+  line-height: 300px;
+  word-wrap: break-word;
+  border: 3px solid #4CD68E;
+  text-align: center;
+}
+#start-card span {
+  display: inline-block;
+  line-height: 40px;
+  width: 200px;
+  font-size: 30px;
+  vertical-align: middle;
+}
+
+#footer .button {
+  /*color: #fff;*/
+}
+
+@-webkit-keyframes bounceIn {
+  0% {
+    -webkit-transform: scale(0,0);
+  }
+  70% {
+    -webkit-transform: scale(1.2,1.2);
+  }
+  100% {
+    -webkit-transform: scale(1,1);
+  }
+}
+
+.swipe-card.pop-in-start {
+  -webkit-transform: scale(0,0);
+}
+.swipe-card.pop-in {
+  -webkit-animation: bounceIn 0.25s ease-out;
+}
+/* END OF JELLY SWIPE CSS*/
+
+/*iphone 4*/
+@media screen and (device-aspect-ratio: 2/3) { 
+  .swipe-card {
+    height: 420px !important;
+      height: 460px;
+  margin-top: -220px;
+  }
+  .swipe-card .image {
+    max-height: 225px;
+    height: 225px;
+  }
+  .cardSearchBox {
+    position: fixed;
+    top: 215px;
+    width: 100%;
+    margin: 0;
+  }
+}
+.refresher {
+  width: 100%;
+  /*width:auto !important;*/
+  /*right: 0 !important;*/
+}
+.carrot {
+  margin: 0px; 
+  color: #888888;
+  font-size: 0.7em; 
+  -webkit-transform: scale(1.7, 1.0);
+}
+.carrotLight {
+  color: #D0D0D0;
+}
+
+.postImageThumb {
+  width: 200px;
+  position: fixed;
+  top: 250px;
+  z-index: 2;
+  margin-left: 10px;
+}
+.postCommentsBox {
+  height: 560px;
+}
+.postCommentsBox-editing{
+  height:35px;
+}
+.postSideBuffer {
+  padding-left: 10px;
+}
+.advPost {
+  margin: 10px 0px;
+  border-bottom: 1px solid #ddd;
+}
+.deletePostPhoto {
+  z-index: 3;
+  position: fixed;
+  left: 180px;
+  top: 250px;
+  /*left: 127px;*/
+  background: rgba(136,136,136, .4);
+  color: white;
+  padding: 5px 11px 5px 11px;
+  border-radius: 30px;
+}
+.feedImageMargin {
+  margin: 0 0 0 -15px;
+}
+.landscapeHeight {
+  height: 240px;
+}
+.portraitHeight {
+  height: 427px;
+}
+/*.checkboxGraphic {
+  height: 20px;
+  width: 20px;
+  margin-top: 3px;
+  z-index: 2;
+}*/
+.editProfileX {
+  margin-left: 2px;
+  margin-top: -5px;
+  min-height: 32px;
+}
+.marginLeftRight-10 {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.createEventButton {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 95%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.peopleFixedList {
+  position: fixed !important;
+  bottom: 0px !important;
+  margin-bottom: 0px;
+  /*top: 64px !important;*/
+  z-index: 2 !important;
+  width: 100% !important;
+}
+textarea {
+  resize: none;
+}
+.aboutMeTextarea {
+  height: 140px;
+}
+.miniToggle .track {
+  height: 20px !important;
+  margin-top: 6px;
+  /*background-color: #e74c3c !important;*/
+}
+.miniToggle .handle {
+  height: 16px !important;
+  margin-top: 6px;
+  /*background-color: #e74c3c !important;*/
+}
+.roundedBorders {
+  border-radius: 6px !important; 
+}
+.mimicInputLabel {
+  color:#444;font-weight:700;font-size:14px;
+}
+.friendsAdded {
+  background-color: #D0D0D0 !important;
+}
+.friendNameListSize {
+  padding: 9px 15px;
+  height: 44px;
+}
+.collectionFriendSearch {
+  top: 0;
+}
+.tabButton {
+  text-align: center;
+  vertical-align: middle;
+  display: block;
+  border: 1px solid white;
+}
+.tabButtonLeft {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.tabButtonRight {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.tabButtonMenu {
+  width: 230px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 2px;
+}
+.tabButtonSelected {
+  background: white;
+  color: #ff7400;
+}
+.feedWrapper {
+  margin-top: 64px;
+}
+.backgroundLightOrange {
+  background: #F5D0A9 !important;
+}
+.friendList{
+  position:static;
+  height:190px;
+  width:100%;
+  has-bouncing=true;
+}
+.friendListNames{
+  position:relative;
+  margin-left:45px;
+}
+.friendListImage{
+  position:relative;
+  float:left;
+  padding-top:6px;
+  margin-left:5px;
+  height:38px;
+  width:32px;
+}

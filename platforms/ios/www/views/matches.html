@@ -1,0 +1,113 @@
+<ion-header-bar align-title="middle" class="bar-dark" ng-show='!onMatchesPage'>
+  <a href='#/tab/chat'><button class="button button-icon button-clear ion-ios7-arrow-back"></button></a>
+  <img src='img/intro3_white_cropped.png' class='title centerItem headerLogo'/>
+</ion-header-bar>
+
+<ion-view title="Intro" hide-nav-bar="true">  
+  <div ng-show='!onMatchesPage' class='height40'></div>
+  <!-- For vertical scroll effect -->
+  <ion-content direction="y" scrollbar-y="false">
+    <div ng-if="matches.length>0">
+    <!-- For Horizontal carousel for different users: Use AngularJS Carousel Plugin  -->
+    <ul rn-carousel>
+      <li ng-repeat="item in matches|carouselSlice:slideStartIndex:matches.length-slideStartIndex">
+        <!--Horizontal carousel for user's profile images -->
+        <ion-slide-box class='zTop' show-pager="false" does-continue="false" active-slide='currentSlide'>
+          <ion-slide ng-repeat='image in item.profilePhotos track by $index'>
+            <img class='height320 centerItem' src={{image}}>
+           </ion-slide>
+        </ion-slide-box>
+
+        <!-- Display personal profile infos -->
+        <div ng-cloak class="feedFlash whitespaceNormal" ng-show='firstTime'>
+          View people and see what they've been up to. If you'd like to meet someone, tap 'Yes'! If you both say 'Yes', you'll be connected 
+          <div ng-click='hideFirstTime()' class='italic'>Hide</div>
+        </div>
+        <br>
+        <div ng-show='onMatchesPage'>   <!-- Yes&No Button on page which is used to request connect to antoher person  -->
+          <button class='nobutton button button-outline button-assertive roundedBorders' ng-click='no()'>No</button>
+          <button class='floatRight button button-outline button-balanced roundedBorders' ng-click='yes()'>Yes</button>
+        </div>
+    
+        <div class='centerText height30'> <!--  Age -->
+          <h3>{{item.firstname}}<span ng-show='item.age'>, {{item.age}}</span></h3>
+        </div>
+        <br>
+        <div ng-click='viewMutualFriends()' style='margin-left: -10px'> <!-- Button to view Mutual Friends  -->
+          <button class='button iconLarge verticalAlignMiddle button-clear ion-person-stalker button-dark' ></button>
+          View Mutual Friends
+        </div>
+        <!--Distance information -->
+        <div class='marginBottom10' ng-cloak ng-show='item.distance && item.distance>2'>
+          {item.distance}} miles away
+        </div>
+        <div class='marginBottom10' ng-cloak ng-show='item.distance && item.distance<3'>Less than 2 miles away</div>
+
+        <p ng-show='item.feet'><span class='boldType'>Height </span>{{item.feet}}' {{item.inches}}"</p>  <!-- Height -->
+        <p ng-show='item.college'><span class='boldType'>School</span> <!-- School -->
+            <span>{{item.college.join(', ')}}</span>
+        </p>
+        <p ng-show='item.occupation'><span class='boldType'>Occupation</span>  <!-- Occupation -->
+          <span>{{item.occupation}}</span>
+        </p>
+        <p ng-show='item.religion'><span class='boldType'>Religion</span>  <!-- Religion -->
+          <span>{{item.religion}}</span>
+        </p>
+
+        <!-- {{match.vouches}}
+        <span ng-repeat='comments in match.comments' class='friendSayTags'><span>"{{comments.text}}"</span></span>
+        <br>
+        {{match.customTags}}
+        TEMP TURNED OFF
+        <span class='boldType'>Friends say</span><br>
+        <span ng-repeat='tag in match.customTags'>
+          <span class='friendSayTags' ng-show='tag && tag.approved'>#{{tag.text}}&nbsp</span>
+          <br ng-show='tag && tag.approved'>
+        </span>
+        <span ng-repeat='tag in matchTags'>
+          <span class='friendSayTags' ng-show='tag'>#{{tag[0]}}&nbsp</span>
+          <span class='badge badge-calm' ng-show='tag[1] > 1'>{{tag[1]}}</span>
+        </span> -->
+        
+        <br>
+        <span class='boldType' ng-show='item.about'>{{item.firstname}} says</span><br>  <!-- First Name -->
+        <p>{{item.about}}</p>
+        <!-- Alert button which is used to Report -->
+        <button class='button ion-alert button-clear button-assertive floatRight largerFont' ng-click='report()'></button>
+        
+        <br>
+
+        <!-- Display posts -->
+        <div style='min-height: 18px'></div>
+        <div ng-repeat="post in item.posts track by $index" ng-init="displayPost=true;">
+          <div class="item item-divider" style='width:100%;' ng-show='posts.length > 0'>Posts</div>
+          <!-- This margin is just to correct for padding, padding requirement is a bug that should be fixed-->
+          <div class='item feedSize' style='width:100%;'>
+            <span class='feedListContent'>
+              <!-- <img src='https://graph.facebook.com/{{post.posterFid}}/picture?redirect=1&height=60&width=60' class='feedListPhoto displayInlineBlock' ng-click='viewStranger("poster","stranger",$index)'> -->
+              <!-- Picture of the post -->
+              <img src='https://graph.facebook.com/{{post.posterFid}}/picture?redirect=1&height=60&width=60' class='feedListPhoto displayInlineBlock' >
+              <div class='displayInlineBlock'>
+                <div class='marginLeft10 feedName'>{{post.posterName}}</div>    <!-- Post Name -->
+                <div class='marginLeft10 feedDate medGrayText'>{{post.date}}</div>  <!-- Date of Post -->
+              </div>
+              <span class='feedDate medGrayText' ng-show='post.atEvent'>@{{post.atEvent.name}}</span>
+              <span class='feedDate medGrayText' ng-show='post.place'>@{{post.place.name}}</span>
+              <div class='marginLeft10 feedName'>{{post.subjectName}}</div>
+              <div class='feedDate medGrayText whitespaceNormal' ng-show='post.users.length>0'>w/ 
+                <span ng-repeat='user in post.users'>
+                  <span class='boldType'>{{user.name}}</span>
+                  <!-- <span class='boldType' ng-click='viewStranger("subject", "stranger",$parent.$index, $index)'>{{user.name}}</span> -->
+                  <span ng-show='post.users.length-1>$index'>,</span>
+                </span>
+              </div>
+              <div class='feedContent'>{{post.content}}</div>
+              <img ng-src="{{post.image.url}}" class='width320 feedImageMargin' ng-show='post.image' ng-class="{'landscapeHeight': post.image.orientation.landscape, 'portraitHeight': post.image.orientation.portrait}">
+            </span>
+          </div>
+        </div>
+      </li>
+    </ul>
+    </div>
+  </ion-content>
+</ion-view>

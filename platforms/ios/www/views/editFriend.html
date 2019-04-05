@@ -1,0 +1,20 @@
+
+
+<ion-view>
+  <div class='fixedItem fullWidth whitespace editFriendMargin' ng-class="{'borderBottom': location()!=='/tab/editFriend/introFriend'}">
+      <img class='height100 friendPicRounded verticalTop marginLeft10' src='https://graph.facebook.com/{{friend.fid}}/picture?redirect=1&height=130&width=130'>
+    <div class='inlineBlock'>
+      <h4 class='centerVertical marginLeft10 friendNamePx textWrap'>{{friend.name}}</h4>
+      
+      <br>
+        <span class='button button-clear ion-pricetag friendTagsIcon' ng-class="{'iconOrange': location()==='/tab/editFriend/default'}" ui-sref='tabs.editFriend.default'></span>
+        <span class="icon-profile friendProfileFontIcon margin5" ng-class="{'iconOrange': location()==='/tab/editFriend/friendDetails'}" ui-sref="tabs.editFriend.friendDetails"></span>
+        <img ng-show='location()==="/tab/editFriend/introFriend"' src="img/handshakeOrangeSmall.png" class='friendProfileIcon' ui-sref='tabs.editFriend.introFriend'>
+        <img ng-hide='location()==="/tab/editFriend/introFriend"' src="img/handshakeGraySmall.png" class='friendProfileIcon' ui-sref='tabs.editFriend.introFriend'>
+      </div>
+  </div>
+    <div ui-view></div>
+
+</ion-view>
+
+

@@ -1,0 +1,42 @@
+    <div class='fixedSearch'>
+      <div class="item item-divider item-input-inset searchWrapper">
+        <label class="item-input-wrapper searchBox">
+          <button class='icon ion-ios7-search-strong button-clear'></button>
+          <input ng-keypress='keyPress()' type="text" placeholder="Search" ng-model="search.name">
+          
+        </label>
+      </div>
+    </div>
+<ion-view title='{{introLogo}}'>
+    <ion-content
+    has-header="true"
+    padding='true'
+    scroll='true'
+    class='mainWrapper'
+    >
+    <ion-nav-buttons side="left">
+      <a ng-href="#/tab/feed"><button class="button button-icon button-clear ion-ios7-arrow-back"></button></a>
+    </ion-nav-buttons>
+      
+    <div class='list searchMargin'>
+      <ion-refresher pulling-text="Pull to check for new facebook friends..." on-refresh="doRefresh()" class='refresher'>
+      </ion-refresher>
+      
+      <div ng-repeat="friend in (filtered.friends = (friendData | orderBy:'name' | filter:search:strict | limitTo : limit))">
+        <div class='item friendListSize' id='{{$index}}' ng-click='selectFriend($index)'>
+            <img src='https://graph.facebook.com/{{friend.fid}}/picture?redirect=1&height=50&width=50' class='friendListPhoto centerVertical'>
+            <span class='marginLeft10'>{{friend.name}}</span>
+          </div>
+      </div>
+    </div>
+    <ion-infinite-scroll
+    on-infinite="loadMore()"
+    distance="15%"
+    icon=''
+    >
+  </ion-infinite-scroll>
+
+    
+  </ion-content>
+</ion-view>
+

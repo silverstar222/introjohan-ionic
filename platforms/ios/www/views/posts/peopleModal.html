@@ -1,0 +1,54 @@
+
+<div class="modal">
+  <ion-header-bar class="bar-dark">
+    <button class="button button-icon button-clear ion-ios7-arrow-left colorLightGray fontSize15" ng-click="closePeopleModal()"></button>
+    <h1 class='title'>Add friends</h1>
+  </ion-header-bar>
+
+  <div class='list peopleFixedList' ng-show='selectedFriends.length > 0'>
+    <div class='item whitespaceNormal friendsAdded'>
+      <div >
+      w/
+        <span ng-repeat='friend in selectedFriends track by $index' ng-click='removeFriend($index)'>{{friend.name}}<span ng-show='selectedFriends.length-1>$index'>,</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  
+  <ion-content padding="false" scroll='true'>
+
+    
+    <div class="list" >
+      <div class="item item-divider">
+        Recents
+      </div>
+      <div class='item friendNameListSize' ng-show='user.recentlyTagged.length < 1'>
+        (nobody so far...)
+      </div>
+      <div ng-repeat='friend in user.recentlyTagged'>
+        <div class='item friendNameListSize' id='{{$index}}' ng-click='selectFriend($index, user.recentlyTagged)'>
+          <span class='marginLeft10'>{{friend.name}}</span>
+        </div>
+      </div>
+      <div class="item item-divider">
+        Friends
+      </div>
+      <label class="item item-input">
+        <eased-input value='friendSearch.searchValue' placeholder="Who you with?" timeout='350'/>
+      </label>
+      </div>
+      <div 
+      collection-repeat="friend in (filtered.friends = (user.friends.data | orderBy:'name' | filter:friendSearch.searchValue:strict ))"
+      collection-item-width="'100%'"
+      collection-item-height="44"
+      class='fullWidth'
+      style='top: -20px'
+      >
+        <div class='item friendNameListSize' id='{{$index}}' ng-click='selectFriend($index, filtered.friends)'>
+          <span class='marginLeft10'>{{friend.name}}</span>
+        </div>
+      </div>      
+
+  </ion-content>
+</div>

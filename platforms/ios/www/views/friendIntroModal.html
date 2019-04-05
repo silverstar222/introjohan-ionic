@@ -1,0 +1,24 @@
+<div class="modal">
+  <ion-header-bar class="photoHeader">
+    <button class="button button-primary button-clear" ng-click="closeModal()">Cancel</button>
+    
+  </ion-header-bar>
+  <ion-content padding="true" scroll='true'>
+		<div class="item item-divider whitespaceNormal">
+
+			Select a friend and we'll send a message to them asking for an intro
+		</div>
+
+		<ul class='list' ng-repeat='friend in mutualFriendList'>
+			<li class="item item-icon-right" ng-click='messageFriend($index)'>
+		    {{friend.name}}
+		    <i class="icon icon-clear ion-paper-airplane iconOrange"></i>
+		  </li>
+		</ul>
+
+		
+  </ion-content>
+   
+  
+</div>
+

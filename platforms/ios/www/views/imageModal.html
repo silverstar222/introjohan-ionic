@@ -1,0 +1,18 @@
+
+<div class="modal">
+  <ion-header-bar class="photoHeader">
+    <button class="button button-primary button-clear" ng-click="closeImageModal()">Cancel</button>
+    <a ng-hide='firstTime' href='#/tab/editProfile' ng-click="savePhoto()">
+      <button class="button button-positive button-clear" >Select photo</button>
+    </a>
+    <a ng-show='firstTime' href='#/editProfile' ng-click="savePhoto()">
+      <button class="button button-positive button-clear" >Select photo</button>
+    </a>
+  </ion-header-bar>
+  <ion-content padding="false" scroll='false'>
+    <div class='fullImagePage'>
+      <img src='{{fullImageSource}}' class='fullImage'>
+    </div>
+  </ion-content>
+
+</div>

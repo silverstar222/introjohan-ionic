@@ -1,0 +1,24 @@
+<div class="modal">
+  <ion-header-bar class="bar-dark">
+    <button class="button button-icon button-clear ion-ios7-arrow-back" ng-click="closeAllTagsModal()"></button>
+    <img src='https://graph.facebook.com/{{friend.fid}}/picture?redirect=1&height=50&width=50' class='chatHeaderPhoto centerItem title'>
+   
+  </ion-header-bar>
+  <ion-content padding="true" scroll='true'>
+  <div class='bodyWrapper'>
+    <button class='button tagSelectLabel button-assertive' ng-class="{'button-outline': !selected.looks[$index]}" ng-repeat='tag in tagsLooks track by $index' ng-click='selectTag("looks",$index)'>#{{tag}}
+    </button>
+    <button class='button tagSelectLabel button-balanced' ng-class="{'button-outline': !selected.activities[$index]}" ng-repeat='tag in tagsActivities track by $index' ng-click='selectTag("activities",$index)'>#{{tag}}
+    </button>
+    <button class='button tagSelectLabel button-positive' ng-class="{'button-outline': !selected.traits[$index]}" ng-repeat='tag in tagsTraits track by $index' ng-click='selectTag("traits",$index)'>#{{tag}}
+    </button>
+  </div>
+  <br>
+  </ion-content>
+   
+</div>
+<!-- <div ng-class="{'active': tag.clicked}" ng-repeat='tag in tagsLooks'>
+    <div class='button button-outline button-assertive tagSelectLabel' ng-model='tag.clicked'>
+      #{{tag}}
+    </div>
+  </div> -->

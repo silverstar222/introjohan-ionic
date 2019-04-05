@@ -1,0 +1,55 @@
+
+<div class="modal">
+  <ion-header-bar class="bar-dark">
+    <button class="button button-icon button-clear ion-ios7-arrow-left colorLightGray fontSize15" ng-click="closeEventsModal()"></button>
+    <h1 class='title'>Add event</h1>
+  </ion-header-bar>
+  
+  <ion-content padding="false" scroll='true'>
+      <div class="item item-divider">
+        Create New Event
+      </div>
+      <label class="item item-input">
+        <input type='text' value='' placeholder="Event name" ng-model='newEvent.name'/>
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          <span style='font-weight: 400'>End time</span>
+        </div>
+        <select ng-model='newEvent.duration'>
+          <option>30 minutes</option>
+          <option>1 hour</option>
+          <option>2 hours</option>
+          <option>3 hours</option>
+          <option selected>4 hours</option>
+          <option>5 hours</option>
+          <option>6 hours</option>
+          <option>7 hours</option>
+          <option>8 hours</option>
+          <option>9 hours</option>
+          <option>10 hours</option>
+          <option>11 hours</option>
+          <option>12 hours</option>
+          <option>24 hours</option>
+        </select>
+      </label>
+      <div ng-show='newEvent.name' class='button button-positive button-small createEventButton' ng-click='createEvent()'>Create event</div>
+      <div class="item item-divider">
+        Or Select Event: {{events.length}} events nearby
+      </div>
+      
+      <div ng-repeat="event in events">
+        <div class='item' id='{{$index}}' ng-click='selectEvent($index)'>
+          <span class='boldType'>{{event.name}}</span>
+          <div class='feedDate medGrayText'>{{event.distance}} miles away.
+          <span class=''>Created by</span></div>
+          <img src='https://graph.facebook.com/{{event.creator.fid}}/picture?redirect=1&height=60&width=60' class='feedListPhoto displayInlineBlock' style='vertical-align: middle'>
+          <div class='displayInlineBlock'>
+            <div class='marginLeft10 feedName'>{{event.creator.name.split(' ')[0]}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+</div>

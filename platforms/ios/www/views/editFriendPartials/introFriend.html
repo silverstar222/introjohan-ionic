@@ -1,0 +1,50 @@
+<!-- <div class='fullWidth whitespace'> -->
+	<!-- <h4>Intro friend to {{friend.name.split(' ')[0]}}</h4> -->
+
+<!-- </div> -->
+  <!-- <button ng-show='match' class='button button-outline button-energized floatRight marginRight10' ng-click='introFriends()'>Intro them!</button> -->
+    <!-- ng-class="{introHighlight: highlight}" -->
+<div class='fixedItem fullWidth whitespace introFriendImageMargin displayTable marginLeft10'>
+  <div ng-class="{introHighlight: highlight}">
+    <div ng-show='!match' class='inlineBlock'>
+      <div class='height100 width100 friendPicRounded centerText questionMark'><span>?</span></div>
+    </div>
+    <div ng-show='match' class='inlineBlock' >
+      <img class='height100 width100 friendPicRounded' src='https://graph.facebook.com/{{match.fid}}/picture?redirect=1&height=130&width=130' ng-click='introFriends()'>
+    </div>
+    <h4 class='centerVertical marginLeft10' ng-click='introFriends()'>{{match.name}}</h4>
+  </div>
+</div>
+<div class='fixedItem fullWidth whitespace introFriendSearchMargin displayTable'>
+	<div class="item item-divider item-input-inset searchWrapper">
+        <label class="item-input-wrapper searchBox">
+          <button class='icon ion-ios7-search-strong button-clear'></button>
+          <input ng-keypress='keyPress()' type="text" placeholder="Search" ng-model="search.name">
+          
+        </label>
+      </div>
+    </div>
+
+
+<ion-content has-header="false" padding="false" scroll='true' class='introFriendContentMargin'>
+
+      <!-- {{friendList}} -->
+      <!-- <div ng-repeat='friend in friendList'>{{friend.name}}</div> -->
+<div ng-repeat="friend in (filtered.friends = (friendList | orderBy:'name' | filter:search:strict | limitTo : limit))">
+        <!-- <div ng-show="([friend] | filter:search:strict).length > 0" class='item' id='{{$index}}' ng-click='selectFriend($index)'> -->
+        <div class='item friendListSize' id='{{$index}}' ng-click='selectFriend($index)'>
+            <!-- <img ng-show='friend.profilePhotos[0]' src='{{friend.profilePhotos[0]}}' class='friendListPhoto'> -->
+            <!-- <img ng-hide='friend.profilePhotos[0]' src='https://graph.facebook.com/{{friend.fid}}/picture?redirect=1&height=50&width=50' class='friendListPhoto'> -->
+            <!-- <img src='https://graph.facebook.com/{{friend.id}}/picture?redirect=1&height=50&width=50' class='friendListPhoto'> -->
+            <img src='https://graph.facebook.com/{{friend.fid}}/picture?redirect=1&height=50&width=50' class='friendListPhoto centerVertical'>
+            <span class='marginLeft10'>{{friend.name}}</span>
+          </div>
+	      </div>
+
+    <ion-infinite-scroll
+    on-infinite="loadMore()"
+    distance="15%"
+    icon=''
+    >
+  </ion-infinite-scroll>
+	      </ion-content>

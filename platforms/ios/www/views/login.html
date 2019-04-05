@@ -1,0 +1,46 @@
+<ion-view hide-nav-bar="true">     
+  <div class='loginSlideBox'>
+      <ion-slide-box active-slide='currentSlide' class='zTop'>
+
+        <ion-slide>
+          <div>
+            <img class='loginSlideBoxHeight centerItem' src={{match.profilePhotos[0]}}>
+            <!-- <h3 class='introSlideText slideTextLow mediaQ'>intro friends &<br>meet new people</h3> -->
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div>
+            <img class='loginSlideBoxHeight centerItem' src={{match.profilePhotos[1]}}>
+            <!-- <h3 class='introSlideText slideTextLow mediaQ'>describe yourself & see what others say...</h3> -->
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div>
+            <img class='loginSlideBoxHeight centerItem' src={{match.profilePhotos[2]}}>
+            <!-- <h3 class='introSlideText slideTextLow mediaQ'>...post what you and your friends are up to...</h3> -->
+          </div>
+        </ion-slide>
+        <!-- <ion-slide>
+          <div>
+            <img class='height320 centerItem' src={{match.profilePhotos[3]}}>
+            <h3 class='introSlideText slideTextHigh mediaQ'>...meet people and get connected!</h3>
+          </div>
+        </ion-slide> -->
+      </ion-slide-box>
+    </div> 
+
+  <ion-content has-header="false" padding="true" class='orangeBackground'>
+
+    <div class='loginWrapper'>
+       
+      <!-- <img class='centerItem logoHeight marginTop15 marginBottom10' src='img/intro3.png'> -->
+      
+      <img class='fbLogin centerItem' src='img/active_404@2x.png' ng-click='loginClick()'>
+      <h5 class='centerText loginText'>We will <span class='highlightText'>NEVER</span> post to Facebook without your permission! <span class='highlightText' ng-click='privacyPolicyAlert()'>Privacy Policy</span></h5>
+      <br>
+      <div ng-click='eulaAlert()' class='smallText centerText'>By logging in you agree to our <span class='highlightText'>user terms</span>.</div>
+
+    </div>
+
+  </ion-content>
+</ion-view>

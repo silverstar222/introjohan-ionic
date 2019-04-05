@@ -1,0 +1,76 @@
+    <ion-view title='Create Post'>
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-ios7-arrow-left colorLightGray fontSize15" ng-click="toFeed()"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class='button button-clear' ng-click='savePost()'>Post!</button>
+    </ion-nav-buttons>    
+
+    <ion-content
+    padding='false'
+    scroll='true'
+    class='mainWrapper'
+    >
+      
+  
+    <div class='list margin0'>
+      <ion-toggle ng-model='content.publicPost' ng-show='!show'>
+        Show on the Feed
+      </ion-toggle>
+      <div class='item padding0 margin0 row'>
+        <div class='col button ion-camera iconLarge button-clear button-calm' ng-click='getCamera(1)'></div>
+        <div class='col button ion-images iconLarge button-clear button-royal' ng-click='getCamera(0)'></div>
+        <!-- <div class='col button ion-location iconLarge button-clear button-positive ' ng-click='getPlaces()'></div> -->
+        <div class='col button ion-android-add-contact iconLarge button-clear button-balanced' ng-click='getPeople()'></div>
+        <div class='col button ion-beer iconLarge button-energized button-clear noBorder' ng-click='getEvents()'></div>
+      </div>
+    </div>
+
+    <!-- <button ng-click='testFilter()'>test filters</button> -->
+    <!-- <canvas id="canvas" width=320></canvas> -->
+    
+
+    <!-- <button ng-click='testFilter2()'>test filters2</button> -->
+    <!-- <button ng-click='testFilter3()'>test filters3</button> -->
+    <!-- <a href="#" id="resetbtn" class="btn">Reset Photo</a>
+    <a href="#" id="brightnessbtn" class="btn">Brightness</a>
+    <a href="#" id="noisebtn" class="btn">Noise</a>
+    <canvas id="maincanvas"></canvas> -->
+    <!-- <canvas id="maincanvas"></canvas>
+      <a href="#" id="resetbtn" class="btn">Reset</a>
+      <a href="#" id="brightnessbtn" class="btn">Sincity</a> -->
+    <!-- <img ng-src='{{tempImage2}}' id='imageToFilter' style='width: 320px'> -->
+    <div class='marginTopBottom5' ng-show='selectedEvent || selectedPlace || selectedFriends.length > 0'>
+      <span class='postSideBuffer' ng-show='selectedEvent'>@{{selectedEvent.name}}</span>
+      <span class='postSideBuffer' ng-show='selectedPlace' ng-click='getPlaces()'><span class='ion-location'></span> {{selectedPlace.name}} [or select venue]</span>
+      <span class='postSideBuffer' ng-show='selectedFriends.length > 0'>
+        w/ 
+        <span ng-repeat='friend in selectedFriends'>
+          <span class='friendSayTags'>{{friend.name}}</span><span ng-show='selectedFriends.length-1>$index' style="border-style:none;">,</span></span>
+      </span>
+    </div>
+    <div class="list padding0">
+      <label class="item item-input">
+        <textarea id="text" placeholder="What's up?" auto-focus ng-model='content.textContent' ng-focus="textareaFocused()" ng-keyup='onKeyUp($event)' ng-blur="keyboardClosed()" ng-class="textareaStyle" style="z-index:9998;"></textarea>
+      </label>
+    </div>
+    
+    <div>
+      <ion-scroll ng-show="show" class='friendList' style={{"background-color:#FFFFFF;"+scrollStyle+"z-index:9999;"}}>
+        <span>
+          <div ng-repeat="friend in (filtered.friends = (friends | orderBy:'name' | starsWith:friendSearch.name))" >
+            <img src='https://graph.facebook.com/{{friend.fid}}/picture?redirect=1&height=30&width=30' ng-click='viewStranger("poster","friends",$index)' class='friendListImage'>
+            <span class='item friendNameListSize friendListNames' id='{{$index}}' ng-click='selectFriend($index, filtered.friends)' style="border-style:none;">
+              {{friend.name}}
+            </span>            
+          </div>
+        </span>
+      </ion-scroll>
+    </div>
+    
+    <img src='{{tempImage}}' class='postImageThumb' ng-show='tempImage'>
+    <span ng-show='tempImage' class='deletePostPhoto' ng-click='deletePhoto()'>X</span>
+      
+    
+  </ion-content>
+</ion-view>

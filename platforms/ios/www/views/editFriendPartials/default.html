@@ -1,0 +1,68 @@
+<!-- <h1>State 1 default</h1> --> 
+<!-- <p>stuff stuff</p> -->
+<!-- <a href='#/login'>pg2</a> -->
+<!-- <button class='button button-outline button-calm' ng-click='editFriend.introFriend'>Intro</button> -->
+<!-- <a href="#/tab/editFriend/introFriend">asdf</a> -->
+<!-- <button class='button button-outline button-calm'>Intro</button> -->
+<!-- <button ui-sref="login.introFriend">pg2</button> -->
+
+
+<ion-content has-header="false" padding="true" scroll='true' class='imageMargin'>
+<br>
+<h5>What's {{friend.name.split(' ')[0]}} look like?</h5>
+
+<div ng-repeat='tag in tagsRandomLooks track by $index'>
+<span class='button button-assertive tagSelectLabel marginLeft25' ng-class="{'button-outline': !selected.randomLooks[$index]}" ng-click='selectTag("randomLooks", $index)'>
+  #{{tag}}
+
+  </span>
+  </div>
+  <button class='button button-outline marginLeft25 button-assertive tagSelectLabel' ng-click='moreTags("looks")'>...</button>
+	  
+	<button class='button floatRight ion-ios7-arrow-forward editFriendNext' ui-sref="tabs.editFriend.activitiesTags"></button>
+  	
+  <label class="item item-input item-stacked-label noBorder">
+    <span class="input-label">Create tag</span>
+    <br>
+    <div>
+      <span>#</span><input class='noLeftPadding displayInline' ng-model='newTag.tag' type="text" maxLength='25' placeholder="{{placeholderText[0]}}">
+    </div>
+  </label>
+    <button ng-show='newTag.tag' class='button button-positive button-clear' ng-click='saveCustom()'>Save tag</button>
+
+
+</ion-content>
+  <!-- <button class='button button-balanced tagSelectLabel' ng-class="{'button-outline': !selected.traits[$index]}" ng-repeat='tag in randomTagsTraits' ng-click='selectTagTraits($index)'>#{{tag}}
+  </button>
+  <button class='button button-positive tagSelectLabel' ng-class="{'button-outline': !selected.activities[$index]}" ng-repeat='tag in randomTagsActivities' ng-click='selectTagActivities($index)'>#{{tag}}
+  </button> -->
+<!-- <p>What does X do?</p> -->
+<!-- <p>What is X like?</p> -->
+<!-- <button class='button button-outline button-calm introFriendButtons' ui-sref="tabs.editFriend.introFriend">Intro</button>
+<br>
+  <button class='button button-outline button-calm introFriendButtons' ui-sref="tabs.editFriend.comment">Comment</button>
+  <br>
+  <button class='button button-outline button-calm introFriendButtons' ui-sref="tabs.editFriend.tag">Tag</button>
+ -->
+
+  
+    <!-- <label class="item item-input item-stacked-label tagsBox"> -->
+   <!--  <label class="item item-input item-stacked-label">
+      <span class="input-label">Create tag</span>
+      <br>
+      <span>#</span><input class='noLeftPadding displayInline' ng-model='newTag.tag' type="text" maxLength='25' placeholder="LovesSmellfies">
+    </label>
+    <label class="item item-input item-stacked-label">
+      <span class="input-label noBorderBottom">Select tags</span>
+      
+  </label>
+  <button class='button button-assertive tagSelectLabel' ng-class="{'button-outline': !selected.looks[$index]}" ng-repeat='tag in tagsLooks' ng-click='selectTagLooks($index)'>#{{tag}}
+  </button>
+  <button class='button button-balanced tagSelectLabel' ng-class="{'button-outline': !selected.traits[$index]}" ng-repeat='tag in tagsTraits' ng-click='selectTagTraits($index)'>#{{tag}}
+  </button>
+  <button class='button button-positive tagSelectLabel' ng-class="{'button-outline': !selected.activities[$index]}" ng-repeat='tag in tagsActivities' ng-click='selectTagActivities($index)'>#{{tag}}
+  </button>
+  </div>
+  <br> -->
+
+

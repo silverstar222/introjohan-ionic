@@ -1,0 +1,14 @@
+<ion-header-bar align-title="middle" class="bar-dark">
+  <div class="buttons">
+    <button class="button button-icon button-clear ion-ios7-arrow-back" ng-click="back()"></button>
+  </div>
+  <!-- <img src='{{match.thumb.data.url}}' class='chatHeaderPhoto centerItem title'> -->
+</ion-header-bar>
+
+<ion-content has-header="false" padding="false" scroll='true' class='introFriendImageMargin'>
+  <div class="list">
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">Comment</span>
+      <input class='textWrap' ng-model='comment.comment' type="text" maxLength='200' placeholder="#Legendary doesn't even begin to describe...">
+    </label>
+</ion-content>

@@ -1,0 +1,50 @@
+
+<ion-tabs class="tabs-dark tabs-icon-top">
+
+  <!-- <ion-tab title="Intro" icon-on="ion-home" icon-off="ion-home" href="#/tab/editFriend">
+  
+    <ion-nav-view name="editFriend-tab"></ion-nav-view>
+  </ion-tab> -->
+  <ion-tab title="Feed" icon-on="ion-home" icon-off="ion-home" href="#/tab/feed">
+    <ion-nav-view name="main-tab"></ion-nav-view>
+  </ion-tab>
+  
+  <!-- <ion-tab title="Tag" icon-on="ion-pricetag" icon-off="ion-pricetag" href="#/tab/friendCards">
+    <ion-nav-view name="friendCards-tab"></ion-nav-view>
+  </ion-tab> -->
+  <ion-tab title="Post" icon-on="ion-aperture" icon-off="ion-aperture" href="#/tab/post">
+    <ion-nav-view name="post-tab"></ion-nav-view>
+  </ion-tab>
+  <!-- <ion-tab title="Search" icon-on="ion-ios7-search-strong" icon-off="ion-ios7-search-strong" href="#/tab/main">
+    <ion-nav-view name="main-tab"></ion-nav-view>
+  </ion-tab> -->
+  
+  <ion-tab title="Meet" icon-on="ion-android-friends" icon-off="ion-android-friends" href="#/tab/matches">
+    <!-- Tab 2 content -->
+    <!-- <span class=''><span>2</span></span> -->
+    <ion-nav-view name="matches-tab"></ion-nav-view>
+  </ion-tab>
+  <ion-tab title="Chat" icon-on="ion-chatbubbles" icon-off="ion-chatbubbles" href="#/tab/matchlist">
+    <!-- Tab 2 content -->
+    <ion-nav-view name="matchlist-tab"></ion-nav-view>
+    <!-- <span class=''><span>2</span></span> -->
+  </ion-tab>
+ 
+
+  <ion-tab title="Me" icon-on="icon-profile" icon-off="icon-profile" href="#/tab/editProfile">
+    <ion-nav-view name="editProfile-tab" animation="slide-left-right"></ion-nav-view>
+    <!-- Tab 3 content -->
+  </ion-tab>
+  <span ng-show='badges.unreadMessages>0' class='button button-clear ion-record badgeChat' ng-cloak></span>
+  <span ng-show='badges.unreadTags>0' class='button button-clear ion-record badgeProfile' ng-cloak></span>
+  
+</ion-tabs>
+
+
+<!-- 
+  Create tabs with an icon and label, using the tabs-positive style. 
+  Each tab's child <ion-nav-view> directive will have its own 
+  navigation history that also transitions its views in and out.
+-->
+
+

@@ -1,0 +1,22 @@
+
+<div class="modal">
+  <ion-header-bar class="bar-dark">
+    <button class="button button-icon button-clear ion-ios7-arrow-left colorLightGray fontSize15" ng-click="closePlacesModal()"></button>
+    <img src='img/intro3_white_cropped.png' class='title centerItem headerLogo'>   
+  </ion-header-bar>
+  
+  <ion-content padding="false" scroll='true'>
+	  <div class="list">
+		  <label class="item item-input">
+		    <eased-input-places value='places' placeholder="Where are you?" timeout='350'/>
+		  </label>
+			<div ng-repeat="place in (filtered.places = (places.venues | orderBy:'location.distance' ))">
+	      <div class='item friendListSize whitespaceNormal' id='{{$index}}' ng-click='selectPlace($index)'>
+	        <div class='marginLeft10'>{{place.name}}</div>
+	        <div class='marginLeft10 medGrayText feedDate'>{{place.location.address}}</div>
+	      </div>
+	    </div>
+		</div>
+
+  </ion-content>
+</div>

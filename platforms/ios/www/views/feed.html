@@ -1,0 +1,136 @@
+    <ion-view title='' hide-nav-bar="true">
+      <div class='bar bar-header bar-dark'>
+        <div class='row tabButtonMenu'>
+          <div class='col tabButton tabButtonLeft' ng-class="{'tabButtonSelected': viewingFriendTags==='nearby'}" ng-click='viewingFriendTags="nearby"'>Nearby</div>
+          <div class='col tabButton' ng-class="{'tabButtonSelected': viewingFriendTags==='friends'}" ng-click='viewingFriendTags="friends"'>Friends</div>
+          <div class='col tabButton tabButtonRight' ng-class="{'tabButtonSelected': viewingFriendTags==='explore'}" ng-click='viewingFriendTags="explore"'>Explore</div>
+        </div>
+      </div>
+    <ion-content scrollwatch padding='false' scroll='true' class='feedWrapper' >
+      
+      <div>
+      <ion-refresher pulling-text="Pull to udpate..." on-refresh="doRefresh()" class='refresher'>
+      </ion-refresher>
+      </div>
+      
+      <label class="item item-input item-select backgroundLightOrange" ng-show='viewingFriendTags==="nearby"'>
+        <div class="input-label">
+          Filter
+        </div>
+        <select ng-model='filterChoices.selected' class='backgroundLightOrange'>
+          <option value='' selected>{{filterChoices.default}}</option>
+          <option  ng-repeat='place in filterChoices'>{{place.school.name}}</option>
+        </select>
+      </label>
+      <div ng-click='hideFirstTime()' ng-cloak class="feedFlash whitespaceNormal" style='margin: 10px' ng-show='firstTime && viewingFriendTags==="nearby"' >
+           Posts from people nearby show up here. Control who sees your posts under 'Me'
+           <div  class='italic zTop'>Click to hide</div>
+      </div>
+
+      
+      <div ng-repeat="post in friendPosts track by $index" ng-show='viewingFriendTags==="friends"'>
+        <div class='item feedsize' ng-show="post.publicPost">
+          <span class='feedListContent whitespaceNormal' style='width: 275px'>
+            <img src='https://graph.facebook.com/{{post.posterFid}}/picture?redirect=1&height=60&width=60' class='feedListPhoto displayInlineBlock' ng-click='viewStranger("poster","friends",$index)'>
+            <div class='displayInlineBlock'>
+              <div class='marginLeft10 feedName' ng-click='viewStranger("poster","friends",$index)'>{{post.posterName}}</div>
+              <div class='marginLeft10 feedDate medGrayText'>{{post.date}}</div>
+            </div>
+            <span class='feedDate medGrayText' ng-show='post.atEvent' ng-click='selectedEvent($index, "friendPosts")'>@{{post.atEvent.name}}</span>
+            <span class='feedDate medGrayText' ng-show='post.place'><span class='ion-location'></span> {{post.place.name}}</span>
+            <div class='marginLeft10 feedName'>{{post.subjectName}}</div>
+            <div class='feedDate medGrayText whitespaceNormal' ng-show='post.users.length>0'>w/ 
+              <span ng-repeat='user in post.users'><span class='boldType' ng-click='viewStranger("subject", "friends",$parent.$index, $index)'>{{user.name}}</span><span ng-show='post.users.length-1>$index'>,</span>
+              </span>
+            </div>
+            <div class='feedContent'>{{post.content}}</div>
+            <img ng-src="{{post.image.url}}" class='width320 feedImageMargin' ng-show='post.image' ng-class="{'landscapeHeight': post.image.orientation.landscape, 'portraitHeight': post.image.orientation.portrait}">
+          </span>
+          <div class='feedListContent' button='button' style='display: inline-block' ng-click='carrotClick($index, "friendPosts")' >
+            <div class='carrot' ng-hide='post.noVoting'><span ng-hide='post.likes[user.fid]'>&#x25B2;</span><span ng-show='post.likes[user.fid]' class='carrotLight'>&#x25B2;</span></div>
+            <div class='centerText' ng-show='post.likesLength>0'>{{post.likesLength}}</div>
+            <div class='carrot' ng-hide='post.noVoting'><span ng-hide='post.likes[user.fid]' class='carrotLight'>&#x25BC;</span><span ng-show='post.likes[user.fid]' >&#x25BC;</span></div>
+          </div>
+          <!-- <div class='feedListContent' button='button' style='float: right; display: inline; margin-top: 20px' ng-click='carrotClick($index, "friendPosts")' >
+            <div class='floatRight' ng-show='post.likesLength>0'>{{post.likesLength}}</div>
+            <div class='carrot floatRight' ng-hide='post.noVoting'><span ng-hide='post.likes[user.fid]'>&#x25B2;<br></span><span ng-show='post.likes[user.fid]'>&#x25BC;</span></div>
+          </div> -->
+        </div>
+      </div>
+      <div ng-if='viewingFriendTags==="friends" && morePosts.friendPosts'>
+        <div class='button centerItem button-clear button-positive' ng-click="loadMore('friendPosts')">Load more</div>
+      </div>
+
+      <div ng-repeat="post in geoPosts" ng-show='viewingFriendTags==="nearby"'>
+        <div class='item feedsize' ng-show='post.publicPost' >
+          <span class='feedListContent whitespaceNormal' style='width: 275px'>
+            <img src='https://graph.facebook.com/{{post.posterFid}}/picture?redirect=1&height=60&width=60' class='feedListPhoto displayInlineBlock' ng-click='viewStranger("poster","nearby",$index)'>
+          <!-- <div class='displayInlineBlock' style='width: 230px'> -->
+            <div class='displayInlineBlock'>
+              <div class='marginLeft10 feedName' ng-click='viewStranger("poster","nearby",$index)'>{{post.posterName.split(' ')[0]}}</div>
+              <div class='marginLeft10 feedDate medGrayText'>{{post.date}}</div>
+            </div>
+            <span class='feedDate medGrayText' ng-show='post.atEvent' ng-click='selectedEvent($index, "geoPosts")'>@{{post.atEvent.name}}</span>
+            <span class='feedDate medGrayText' ng-show='post.place'><span class='ion-location'></span> {{post.place.name}}</span>
+            <div class='marginLeft10 feedName'>{{post.subjectName}}</div>
+            <div class='feedDate medGrayText whitespaceNormal' ng-show='post.users.length>0'>w/ 
+              <span ng-repeat='user in post.users'><span class='boldType' ng-click='viewStranger("subject", "nearby",$parent.$index, $index)'>{{user.name.split(' ')[0]}}</span><span ng-show='post.users.length-1>$index'>,</span>
+              </span>
+            <!-- </div> -->
+          </div>
+            <div class='feedContent whitespaceNormal'>{{post.content}}</div>
+            <img ng-src="{{post.image.url}}" class='width320 feedImageMargin' ng-show='post.image' ng-class="{'landscapeHeight': post.image.orientation.landscape, 'portraitHeight': post.image.orientation.portrait}">
+           
+          <!-- <div class='feedListContent' button='button' style='float: right; display: inline; margin-top: 20px' ng-click='carrotClick($index, "geoPosts")' > -->
+          </span>
+          <div class='feedListContent' button='button' style='display: inline-block' ng-click='carrotClick($index, "geoPosts")' >
+            <div class='carrot' ng-hide='post.noVoting'><span ng-hide='post.likes[user.fid]'>&#x25B2;</span><span ng-show='post.likes[user.fid]' class='carrotLight'>&#x25B2;</span></div>
+            <div class='centerText' ng-show='post.likesLength>0'>{{post.likesLength}}</div>
+            <div class='carrot' ng-hide='post.noVoting'><span ng-hide='post.likes[user.fid]' class='carrotLight'>&#x25BC;</span><span ng-show='post.likes[user.fid]' >&#x25BC;</span></div>
+          </div>
+        </div>
+      </div>
+      <div ng-if='viewingFriendTags==="nearby" && morePosts.geoPosts'>
+        <div class='button centerItem button-clear button-positive' ng-click="loadMore('geoPosts')">Load more</div>
+      </div>
+      
+      <div ng-repeat="post in posts track by $index" ng-show='viewingFriendTags==="explore"'>
+        <div class='item feedsize' ng-show='post.publicPost' >
+          <span class='feedListContent whitespaceNormal' style='width: 275px'>
+            <img src='https://graph.facebook.com/{{post.posterFid}}/picture?redirect=1&height=60&width=60' class='feedListPhoto displayInlineBlock' ng-click='viewStranger("poster","explore",$index)'>
+            <div class='displayInlineBlock'>
+              <div class='marginLeft10 feedName' ng-click='viewStranger("poster","explore",$index)'>{{post.posterName.split(' ')[0]}}</div>
+              <div class='marginLeft10 feedDate medGrayText'>{{post.date}}</div>
+            </div>
+            <span class='feedDate medGrayText' ng-show='post.atEvent' ng-click='selectedEvent($index, "posts")'>@{{post.atEvent.name}}</span>
+            <span class='feedDate medGrayText' ng-show='post.place'><span class='ion-location'></span> {{post.place.name}}</span>
+            <div class='marginLeft10 feedName'>{{post.subjectName}}</div>
+            <div class='feedDate medGrayText whitespaceNormal' ng-show='post.users.length>0'>w/ 
+              <span ng-repeat='user in post.users'><span class='boldType' ng-click='viewStranger("subject", "explore",$parent.$index, $index)'>{{user.name.split(' ')[0]}}</span><span ng-show='post.users.length-1>$index'>,</span>
+              </span>
+            </div>
+            <div class='feedContent whitespaceNormal'>{{post.content}}</div>
+            <img ng-src="{{post.image.url}}" class='width320 feedImageMargin' ng-show='post.image' ng-class="{'landscapeHeight': post.image.orientation.landscape, 'portraitHeight': post.image.orientation.portrait}">
+          </span>
+          <div class='feedListContent' button='button' style='display: inline-block' ng-click='carrotClick($index, "posts")' >
+            <div class='carrot' ng-hide='post.noVoting'><span ng-hide='post.likes[user.fid]'>&#x25B2;</span><span ng-show='post.likes[user.fid]' class='carrotLight'>&#x25B2;</span></div>
+            <div class='centerText' ng-show='post.likesLength>0'>{{post.likesLength}}</div>
+            <div class='carrot' ng-hide='post.noVoting'><span ng-hide='post.likes[user.fid]' class='carrotLight'>&#x25BC;</span><span ng-show='post.likes[user.fid]' >&#x25BC;</span></div>
+          </div>
+          <!-- <div class='feedListContent' button='button' style='float: right; display: inline; margin-top: 20px' ng-click='carrotClick($index, "posts")' >
+            <div class='floatRight' ng-show='post.likesLength>0'>{{post.likesLength}}</div>
+            <div class='carrot floatRight' ng-hide='post.noVoting'><span ng-hide='post.likes[user.fid]'>&#x25B2;</span><span ng-show='post.likes[user.fid]'>&#x25BC;</span></div>
+          </div> -->
+        </div>
+      </div>
+      <div ng-if='viewingFriendTags==="explore" && morePosts.posts'>
+        <div class='button centerItem button-clear button-positive' ng-click="loadMore('posts')">Load more</div>
+      </div>
+      
+
+  <br ng-show='friendPosts.length<1 && viewingFriendTags==="friends"'>
+  <div ng-cloak ng-show='friendPosts.length<2 && viewingFriendTags==="friends"' class='bodyWrapper feedFlash'>No friends posted yet... Try 'Nearby' or 'Explore' to see others</div>
+  <div ng-cloak ng-show='geoPosts.length<2 && viewingFriendTags==="nearby"' class='bodyWrapper feedFlash'>No posts yet... Try another filter, 'Friends' or 'Explore' to see others</div>
+    
+  </ion-content>
+</ion-view>

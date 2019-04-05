@@ -1,0 +1,40 @@
+
+<div class="modal">
+  <ion-header-bar class="bar-dark">
+    <button class="button button-icon button-clear ion-ios7-arrow-left" ng-click="closeViewEventModal()"></button>
+    <img src='img/intro3_white_cropped.png' class='title centerItem headerLogo'>   
+  </ion-header-bar>
+  
+  <ion-content padding="false" scroll='true'>
+    <div class="item item-divider">
+      {{selectedEventData.event[0].name}}
+    </div>
+    
+    <div ng-repeat="post in selectedEventData.posts track by $index">
+        <div class='item feedsize' ng-show="post.publicPost">
+          <span class='feedListContent whitespaceNormal'>
+          <!-- <span class='feedListContent' ng-click='viewStranger("poster","friends",$index)'> -->
+            <img src='https://graph.facebook.com/{{post.posterFid}}/picture?redirect=1&height=60&width=60' class='feedListPhoto displayInlineBlock' ng-click='viewStranger("poster","friends",$index)'>
+            <div class='displayInlineBlock'>
+              <div class='marginLeft10 feedName' ng-click='viewStranger("poster","friends",$index)'>{{post.posterName}}</div>
+              <div class='marginLeft10 feedDate medGrayText'>{{post.date}}</div>
+            </div>
+            <span class='feedDate medGrayText' ng-show='post.atEvent' ng-click='selectedEvent($index, "friendPosts")'>@{{post.atEvent.name}}</span>
+            <span class='feedDate medGrayText' ng-show='post.place'>in {{post.place.name}}</span>
+            <div class='marginLeft10 feedName'>{{post.subjectName}}</div>
+            <div class='feedDate' ng-show='post.users.length>0'>w/ 
+              <span ng-repeat='user in post.users'><span class='boldType' ng-click='viewStranger("subject", "friends",$parent.$index, $index)'>{{user.name}}</span><span ng-show='post.users.length-1>$index'>,</span>
+              </span>
+            </div>
+            <div class='feedContent'>{{post.content}}</div>
+            <img ng-src="{{post.image.url}}" class='width320 feedImageMargin' ng-show='post.image' ng-class="{'landscapeHeight': post.image.orientation.landscape, 'portraitHeight': post.image.orientation.portrait}">
+          </span>
+          <div class='feedListContent' button='button' style='float: right; display: inline; margin-top: 20px' ng-click='carrotClick($index, "friendPosts")' >
+            <div class='floatRight'>{{post.likesLength}}</div>
+            <div class='carrot floatRight' ng-hide='post.noVoting'><span ng-hide='post.likes[user.fid]'>&#x25B2;</span><span ng-show='post.likes[user.fid]'>&#x25BC;</span></div>
+          </div>
+        </div>
+      </div>
+
+  </ion-content>
+</div>

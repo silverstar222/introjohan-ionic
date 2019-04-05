@@ -1,0 +1,28 @@
+
+  <!-- <ion-content padding="false" scroll='false'> -->
+<ion-content has-header="false" padding="false" scroll='true' class='imageMargin bodyWrapper'>
+  <!-- <div class='centerText'><h3>{{friend.firstname}}</h3></div> -->
+  <!-- {{friend}} -->
+      <br>
+      <p ng-show='friend.feet'><span class='boldType'>Height </span>{{friend.feet}}' {{friend.inches}}"</p>
+      <p ng-show='friend.college'><span class='boldType'>School</span>
+        <span>{{friend.college.join(', ')}}</span>
+      </p>
+      <span class='boldType'>Friends say</span><br>
+      <span ng-hide='friendTags || friend.customTags' class='friendSayTags'>{{friend.name.split(' ')[0]}} doesn't have any tags yet, be the first!</span>
+      <!-- <span ng-repeat='comments in friend.comments' class='friendSayTags'>
+        <span>"{{comments.text}}"</span>
+      </span>
+      <br> -->
+      <span ng-repeat='tag in friend.customTags'>
+        <span class='friendSayTags' ng-show='tag && tag.approved'>#{{tag.text}}&nbsp</span>
+      </span>
+      <br>
+      <span ng-repeat='tag in friendTags'>
+        <span class='friendSayTags' ng-show='tag'>#{{tag[0]}}&nbsp</span>
+        <span class='badge badge-calm' ng-show='tag[1] > 1'>{{tag[1]}}</span>
+      </span>
+      <br>
+      <!-- <span class='boldType'>{{friend.name.split(' ')[0]}} says</span><br> -->
+      <!-- <p>{{friend.about}}</p> -->
+</ion-content>

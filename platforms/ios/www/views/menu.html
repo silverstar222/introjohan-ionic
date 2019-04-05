@@ -1,0 +1,36 @@
+<ion-side-menus>
+        
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-dark">
+      <!-- <ion-nav-back-button class="button-icon ion-arrow-left-c"> -->
+      <!-- </ion-nav-back-button> -->
+    </ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon" ng-click="toggleLeft()">
+      </button>
+    </ion-nav-buttons>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content> 
+  
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-light">
+      <img class='centerItem logoMenu' src='img/intro3png.png'>
+      <!-- <h1 class="title">Intro</h1> -->
+    </ion-header-bar>
+    <ion-content>
+      <ul class="list">
+        <p href="#/menu/main" class="item" ng-click="clickMenuLink('main')">
+          <!-- <button class="button button-icon button-clear ion-home" ng-click="toggleLeft()">
+      </button> -->
+          Home</p>
+        <p class="item" ng-click="clickMenuLink('editProfile')">Edit profile</p>
+        <!-- <p href="#/menu/matchFilter" class="item" ng-click="clickMenuLink('matchFilter')">Filter</p> -->
+        <p href="#/menu/matches" class="item" ng-click="clickMenuLink('matches')">Meet people</p>
+        <p href="#/menu/matchlist" class="item" ng-click="clickMenuLink('matchlist')">Messages</p>
+        <p ng-click='logout()' class='item'>Logout</p>
+        <!-- <a href="#/menu/matches" class="item" ng-click="toggleLeft()">Logout</a> -->
+      </ul>
+    </ion-content>
+  </ion-side-menu>
+  
+</ion-side-menus>

@@ -1,0 +1,15 @@
+
+<div class="modal">
+  <ion-header-bar class="bar-dark">
+    <h1 class="title">Facebook Albums</h1>
+    <button class="button button-primary button-clear" ng-click="closeAlbumsModal()">Cancel</button>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list">
+    	<div class="item item-thumbnail-left" ng-click='albumClick($index)' ng-repeat='album in albums track by $index'>
+	      <img src='{{album.coverUrl}}'>
+	      <h2>{{album.name}}</h2>
+	    </div>
+		</div>
+  </ion-content>
+</div>
